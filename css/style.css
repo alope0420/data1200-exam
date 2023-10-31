@@ -1,5 +1,36 @@
 /* Remember to add comments for anything that is not self-explanatory */
 
 body {
-  background-color: rgb(248, 229, 107);
+  
 }
+
+.navigasjon-bar ul{
+  width: 100%;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+  overflow: hidden;
+}
+
+.navigasjon-bar a{
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  text-align: center;
+}
+
+.navigasjon-bar a:hover{
+  cursor: pointer;
+  background-color: rgb(212, 105, 4);
+}
+
+.navigasjon-bar li{
+  float: left;
+  background-color: rgb(254, 123, 0);
+}
+
+
+
+
