@@ -88,10 +88,6 @@ img {
     color: rgb(140, 135, 135);
 }
 
-.topical-grid-innhold-1 {
-    display: grid;
-    grid-template-columns: 1fr;
-}
 
 .topical-grid-innhold-2 {
     display: grid;
