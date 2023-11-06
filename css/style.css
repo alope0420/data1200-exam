@@ -69,6 +69,10 @@ img {
     width:100%;
 }
 
+.topical-tittel {
+    background-image: url(../img/topical-fjell.jpg);
+}
+
 .fotograf {
     margin-top: 0px;
     font-size: 13px;
