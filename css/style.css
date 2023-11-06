@@ -71,8 +71,9 @@ img {
 
 .link {
     color: black;
-    font-size: 18px;s
+    font-size: 18px;
     line-height: 30px;
+    transition: 0.15s;
 }
 
 .link:hover {
