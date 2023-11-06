@@ -89,7 +89,7 @@ img {
 }
 
 
-.topical-grid-innhold-2 {
+.topical-grid-innhold {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;
