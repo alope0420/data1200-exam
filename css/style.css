@@ -62,7 +62,11 @@ h2 {
 p{
     font-size: 18px;
     line-height: 30px;
-    
+
+}
+
+img {
+    width:100%;
 }
 
 .fotograf {
@@ -78,6 +82,3 @@ p{
     row-gap: 30px;
 }
 
-img {
-    width:100%;
-}
