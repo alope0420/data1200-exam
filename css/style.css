@@ -69,6 +69,12 @@ img {
     width:100%;
 }
 
+.link {
+    color: black;
+    font-size: 18px;
+    line-height: 30px;
+}
+
 .fotograf {
     margin-top: 0px;
     font-size: 13px;
