@@ -57,6 +57,12 @@ p{
     line-height: 30px;
 }
 
+.fotograf {
+    margin-top: 0px;
+    font-size: 10px;
+    color: rgb(140, 135, 135);
+}
+
 img {
     width:100%;
 }
