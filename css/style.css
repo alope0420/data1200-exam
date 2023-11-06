@@ -5,6 +5,11 @@ body {
     margin: 0px; /* To ensure navbar goes all the way to the edges */
 }
 
+main {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
     background-color: rgb(0, 203, 254);
@@ -38,11 +43,6 @@ nav li {
     display: inline-block;
 }
 
-main {
-    margin-left: 20%;
-    margin-right: 20%;
-}
-
 h1 {
     font-size: 45px;
     font-weight: bold;
@@ -59,7 +59,7 @@ p{
 
 .fotograf {
     margin-top: 0px;
-    font-size: 10px;
+    font-size: 13px;
     color: rgb(140, 135, 135);
 }
 
