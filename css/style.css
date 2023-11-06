@@ -43,16 +43,16 @@ main {
     margin-right: 20%;
 }
 
-.topical-overskrift{
+h1 {
     font-size: 45px;
     font-weight: bold;
 }
 
-.topical-h2 {
+h2, h3 {
     font-size: 25px;
 }
 
-.topical-p{
+p{
     font-size: 18px;
     line-height: 30px;
 }
