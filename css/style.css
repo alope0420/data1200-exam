@@ -71,14 +71,14 @@ img {
 
 .link {
     color: black;
-    font-size: 18px;
+    font-size: 18px;s
     line-height: 30px;
 }
 
 .link:hover {
     cursor: pointer;
-    font-size: 13px;
-    text-shadow: rgb(140, 135, 135);
+    color: rgb(180, 1, 1);
+    text-shadow: 5px 5px 5px rgb(140, 135, 135);
 }
 
 .fotograf {
