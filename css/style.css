@@ -69,23 +69,6 @@ img {
     width:100%;
 }
 
-.topical-tittel {
-    background-image: url(../img/topical-bakgrunn-tittel.jpg);
-}
-
-.topical-tittel h1{
-    margin-bottom: 250px;
-    margin-top: 30px;
-    margin-left: 15px;
-    color: white;
-}
-
-.topical-tittel p {
-    margin-left: 15px;
-    margin-bottom: 30px;
-    color: white;
-}
-
 .fotograf {
     margin-top: 0px;
     font-size: 13px;
