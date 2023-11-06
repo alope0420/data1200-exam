@@ -75,7 +75,7 @@ img {
     line-height: 30px;
 }
 
-.link :hover {
+.link:hover {
     cursor: pointer;
     font-size: 13px;
     text-shadow: rgb(140, 135, 135);
