@@ -71,6 +71,8 @@ img {
 
 .topical-tittel {
     background-image: url(../img/topical-fjell.jpg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .fotograf {
