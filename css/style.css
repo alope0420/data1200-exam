@@ -15,6 +15,8 @@ main {
 nav {
     background-image: url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
     border-radius: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 nav ul {
