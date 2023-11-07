@@ -119,3 +119,9 @@ footer {
     margin-left: 20px;
     margin-top:50px
 }
+
+.grid-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+}
