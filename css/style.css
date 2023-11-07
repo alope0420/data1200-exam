@@ -14,7 +14,10 @@ main {
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
     background-image: url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
-    border-radius: 25px;
+    border-radius: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
 }
 
 nav ul {
