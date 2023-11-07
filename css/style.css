@@ -13,6 +13,7 @@ main {
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
     background-color: rgb(2, 60, 176);
+    border-radius: 25px;
 }
 
 nav ul {
@@ -30,7 +31,7 @@ nav a {
     color: white;
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 30px;
+    padding: 25px;
     display: block;
 }
 
@@ -57,6 +58,7 @@ h2 {
     padding-bottom: 10px;
     background-color: rgb(71, 141, 247);
     color: white;
+    border-radius: 10px;
 }
 
 p{
