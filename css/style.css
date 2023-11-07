@@ -3,7 +3,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px; /* To ensure navbar goes all the way to the edges */
-    background-color: rgba(132, 183, 214, 0.644);
+    background-color: white;
 }
 
 main {
