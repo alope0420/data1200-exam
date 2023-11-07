@@ -3,6 +3,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px; /* To ensure navbar goes all the way to the edges */
+    background-color: rgba(120, 245, 153, 0.954));
 }
 
 main {
@@ -12,7 +13,7 @@ main {
 
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
-    background-image: url(../img/h2-bakgrunn.jpg);
+    background-image: url(../img/bakgrunn.jpg);
     border-radius: 25px;
 }
 
@@ -37,7 +38,7 @@ nav a {
 
 nav a:hover {
     cursor: pointer;
-    background-color: rgb(4, 47, 135);
+    background-color: rgba(3, 111, 46, 0.589));
 }
 
 nav li {
@@ -56,8 +57,8 @@ h2 {
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-image: url(../img/h2-bakgrunn.jpg);
-    color: rgb(12, 0, 0);
+    background-image: url(../img/bakgrunn.jpg);
+    color: white;
     border-radius: 10px;
 }
 
