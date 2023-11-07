@@ -1,9 +1,13 @@
-/* Remember to add comments for anything that is not self-explanatory */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0px; /* To ensure navbar goes all the way to the edges */
+    margin: 0px; /* Slik at vi kan få elementer som footer helt ut til kantene */
     background-color: white;
+    /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
+    --bar-background: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
+    url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
+    /* TODO: Skikkelig kildehenvisning for bildet over */
+    /* TODO: Bearbeid bildet slik at det repeater bedre */
 }
 
 main {
@@ -11,8 +15,8 @@ main {
     margin-right: 15%;
 }
 
-/* We don't really need a separate class for the navbar since we only have one of them */
 nav {
+    background-image: var(--bar-background);
     border-radius: 30px;
     margin-left: 20px;
     margin-right: 20px;
@@ -21,25 +25,23 @@ nav {
 
 nav ul {
     text-align: center;
-    list-style-type: none;
+    /*list-style-type: none;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    overflow: hidden;*/
+    /* TODO: Virker som vi ikke trenger alt dette? */
 }
 
 nav a {
-    /* TA recommended we make it more obvious that these are links, hence the underline */
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    color: white;
-    font-size: 20px;
+    text-decoration-line: none;
+    color: whitesmoke;
+    font-size: 22px;
     font-weight: bold;
     padding: 25px;
     display: block;
 }
 
 nav a:hover {
-    cursor: pointer;
     background-color: rgba(3, 111, 46, 0.447);
 }
 
@@ -59,19 +61,21 @@ h2 {
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+    background-image: var(--bar-background);
     color: white;
     border-radius: 10px;
 }
 
-nav, h2 {
-    background-image: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
-        url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
+img + h2 {
+    /* Unngå at overskrifter kommer altfor tett på bilder rett over */
+    margin-top: 25px;
 }
 
-p{
-    font-size: 18px;
-    line-height: 30px;
+/*h1, h2, h3, h4, h5, h6 {}*/
 
+p {
+    font-size: 18px;
+    line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
 }
 
 img {
