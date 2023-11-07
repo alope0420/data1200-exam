@@ -5,9 +5,14 @@ body {
     margin: 0px; /* To ensure navbar goes all the way to the edges */
 }
 
+main {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
-    background-color: rgb(254, 123, 0);
+    background-color: rgb(2, 60, 176);
 }
 
 nav ul {
@@ -31,7 +36,7 @@ nav a {
 
 nav a:hover {
     cursor: pointer;
-    background-color: rgb(212, 105, 4);
+    background-color: rgb(4, 47, 135);
 }
 
 nav li {
@@ -43,6 +48,55 @@ main {
     margin-right: 30%;
 }
 
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 25px;
+    margin-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(71, 141, 247);
+    color: white;
+}
+
+p{
+    font-size: 18px;
+    line-height: 30px;
+
+}
+
 img {
     width:100%;
+}
+
+.link {
+    color: black;
+    font-size: 18px;
+    line-height: 30px;
+    transition: 0.1s;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: rgb(180, 1, 1);
+    text-shadow: 5px 5px 5px rgb(140, 135, 135);
+}
+
+.fotograf {
+    margin-top: 0px;
+    font-size: 13px;
+    color: rgb(140, 135, 135);
+}
+
+
+.topical-grid-innhold {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
 }
