@@ -107,3 +107,11 @@ footer {
     column-gap: 30px;
     row-gap: 30px;
 }
+
+.kontakt-oss {
+    line-height: 30px;
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top:20px
+}
