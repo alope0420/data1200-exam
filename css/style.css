@@ -7,16 +7,15 @@ body {
 }
 
 main {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
-    background-image: url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
     border-radius: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 20px;
 }
 
@@ -60,9 +59,13 @@ h2 {
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-image: url(../img/bakgrunn.jpg);
     color: white;
     border-radius: 10px;
+}
+
+nav, h2 {
+    background-image: linear-gradient(rgba(0.5, 0.2, 0.5, 0.3), rgba(0.5, 0.2, 0.5, 0.3)),
+        url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
 }
 
 p{
