@@ -12,7 +12,7 @@ main {
 
 /* We don't really need a separate class for the navbar since we only have one of them */
 nav {
-    background-color: rgb(2, 60, 176);
+    background-image: url(../img/h2-bakgrunn.jpg);
     border-radius: 25px;
 }
 
@@ -56,8 +56,8 @@ h2 {
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgb(71, 141, 247);
-    color: white;
+    background-image: url(../img/h2-bakgrunn.jpg);
+    color: rgb(12, 0, 0);
     border-radius: 10px;
 }
 
