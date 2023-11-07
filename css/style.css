@@ -64,7 +64,7 @@ h2 {
 }
 
 nav, h2 {
-    background-image: linear-gradient(rgba(0.5, 0.2, 0.5, 0.3), rgba(0.5, 0.2, 0.5, 0.3)),
+    background-image: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
         url(../img/bakgrunn.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
 }
 
