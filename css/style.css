@@ -10,9 +10,20 @@ body {
     /* TODO: Bearbeid bildet slik at det repeater bedre */
 }
 
-main {
-    margin-left: 15%;
-    margin-right: 15%;
+
+
+@media (max-width: 1300px) {
+    main {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 1301px) {
+    main {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
 }
 
 nav {
@@ -79,7 +90,7 @@ p {
 }
 
 img {
-    width:100%;
+    width: 100%;
 }
 
 footer {
@@ -107,12 +118,33 @@ footer {
     color: rgb(140, 135, 135);
 }
 
+@media (min-width: 1001px) {
+    .topical-grid-innhold {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+    
+    .topical-grid-innhold div {
+        grid-row-start: 1;
+    }
 
-.topical-grid-innhold {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 30px;
-    row-gap: 30px;
+    .topical-grid-innhold:nth-of-type(even) div:nth-child(1) {
+        grid-column-start: 1;
+    }
+
+    .topical-grid-innhold:nth-of-type(even) div:nth-child(2) {
+        grid-column-start: 2;
+    }
+
+    .topical-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+        grid-column-start: 2;
+    }
+
+    .topical-grid-innhold:nth-of-type(odd) div:nth-child(2) {
+        grid-column-start: 1;
+    }
 }
 
 
