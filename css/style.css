@@ -1,7 +1,15 @@
 
-body {
+html {
+    /* Jevn rulling ved klikk på jumplinker */
+    scroll-behavior: smooth;
+
+    /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
+    scroll-padding-top: 120px;
+    
+    /* Slik at vi kan få elementer som footer helt ut til kantene */
+    margin: 0px;
+
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0px; /* Slik at vi kan få elementer som footer helt ut til kantene */
     background-color: white;
 
     /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
@@ -12,10 +20,11 @@ body {
     /* TODO: Skikkelig kildehenvisning for bildet over. */
     /* Tengel vil ha en link til siden der man finner bildet, men han er ikke så opptatt av fotograf, årstall osv. */
     /* TODO: Bearbeid bildet slik at det repeater bedre. Akkurat nå er det en "skarp kant" der det repeates */
+
 }
 
 @media (max-width: 1300px) {
-    /* Smale marginer når skjermen ikke er så bred */
+    /* Smalere marginer for smalere skjermer */
     main {
         margin-left: 10px;
         margin-right: 10px;
@@ -30,53 +39,104 @@ body {
     }
 }
 
-nav {
+header {
     background-image: var(--bar-background);
 
-    /* Gi navbaren runde hjørner og litt luft fra kanten av vinduet */
+    /* Gi navbaren runde hjørner og litt avstand fra kanten av vinduet */
     border-radius: 30px;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+
+    min-height: 76px;
+    text-align: center;
 }
 
 nav ul {
     /* Midtstill elementene på menyen */
     text-align: center;
+
+    /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
+    padding: 0;
+    margin: 0;
+
+    /* Fjern kulene foran punktene (bare relevant når menyen vises som en vanlig liste på smal skjerm) */
+    list-style-type: none;
 }
 
-nav a {
+nav a, label {
     text-decoration-line: none;
-    color: whitesmoke;
+    color: linen;
     font-size: 22px;
     font-weight: bold;
     padding: 25px;
     display: block; /* Slik at nettleseren respekterer padding-verdien */
+    transition-duration: 0.1s;
 }
 
 nav a:hover {
     background-color: rgba(0, 200, 80, 0.5);
 }
 
-nav li {
-    /* Plasser elementene på menyen vannrett linje i stedet for i en typisk "liste" */
-    display: inline-block;
+#toppmeny-bryter {
+    display: none;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+}
+
+@media (min-width: 1001px) {
+
+    header {
+        position: sticky;
+        top: 20px;
+    }
+
+    nav li {
+        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
+        display: inline-block;
+    }
+
+    label {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    nav {
+        max-height: 0px;
+        overflow: hidden;
+        transition-duration: 0.25s;
+        transition-property: all;
+        transition-timing-function: ease-out;
+    }
+    #toppmeny-bryter:checked + nav {
+        max-height: 500px;
+    }
+
+    nav li:last-child a:hover {
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
 }
 
 h1 {
-    font-size: 45px;
+    font-size: 48px;
     font-weight: bold;
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 28px;
     margin-top: 0px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-image: var(--bar-background);
-    color: white;
+    color: linen;
     border-radius: 10px;
 }
 
@@ -84,8 +144,6 @@ img + h2 {
     /* Unngå at overskrifter kommer altfor tett på bilder som er rett over */
     margin-top: 25px;
 }
-
-/*h1, h2, h3, h4, h5, h6 {}*/
 
 p {
     font-size: 18px;
@@ -96,6 +154,7 @@ img {
     /* La bilder fylle hele bredden av forelder-elementet som standard */
     /* Da ser det meste greit ut på mobil, og vi kan bruke div-er til å begrense størrelsen der det trengs i andre formater */
     width: 100%;
+    height: auto;
 }
 
 footer {
@@ -122,8 +181,9 @@ footer {
     color: rgb(140, 135, 135);
 }
 
+/* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
+/* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
 @media (min-width: 1001px) {
-    /* Grid-layout med to kolonner */
     .topical-grid-innhold {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -132,7 +192,8 @@ footer {
     }
 
     /* Disse selectorene gjør at bildene havner på venstre/høyre side av teksten annenhver gang */
-    /* Hver div.topical-grid-innhold i HTML-koden inneholder først en div med tekst, og så en div med bilde */
+    /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
+
     /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
     .topical-grid-innhold:nth-of-type(even) div:nth-child(1) {
         grid-column-start: 1;
@@ -141,20 +202,20 @@ footer {
         grid-column-start: 2;
     }
 
-    /* oddetallsindeks: bilde-div i første kolonne, tekst-div i andre kolonne */
-    .topical-grid-innhold:nth-of-type(odd) div:nth-child(1) {
-        grid-column-start: 2;
-    }
+    /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
     .topical-grid-innhold:nth-of-type(odd) div:nth-child(2) {
         grid-column-start: 1;
     }
+    .topical-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+        grid-column-start: 2;
+    }
 
-    /* Tving begge div-ene til å være på første rad (uten dette havner den ene div-en på en ny rad for oddetallstilfellene */
+    /* Tving begge div-ene til å være på første rad */
+    /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
     .topical-grid-innhold div {
         grid-row-start: 1;
     }
 }
-
 
 .footer-tekst {
     line-height: 30px;

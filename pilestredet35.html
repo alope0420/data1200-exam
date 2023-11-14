@@ -1,12 +1,127 @@
 <!DOCTYPE html>
 <html lang="no">
     <head>
-        <title>Main compus</title>
+        <title>Pilestredet 35</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
+
+        <style>
+            header, h2, .grid-sidemeny {
+                box-shadow: 2px 2px 5px black;
+            }
+            /*
+            header {
+                box-shadow:
+                    2px 2px 5px black,
+                    0px -1000px 0px 1000px white;
+            }*/
+            h1 {
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 72px;
+                text-transform: uppercase;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                row-gap: 25px;
+                column-gap: 25px;
+            }
+            .grid-hovedbilde {
+                grid-column-start: 1;
+                grid-column-end: span 2;
+                grid-row-start: 1;
+            }
+            .grid-sidemeny {
+                background-image: var(--bar-background);
+                border-radius: 10px;
+
+                /* Lås sidemenyens posisjon når brukeren ruller langt nok ned */
+                /* align-self forhindrer blokken fra å fylle grid-cellen, slik at den har plass til å bevege seg */
+                position: sticky;
+                top: 120px;
+                align-self: start;
+                
+            }
+            @media (min-width: 1001px) {
+                .grid-sidemeny {
+                    grid-column-start: 1;
+                    grid-row-start: 2;
+                }
+                .grid-artikkel {
+                    grid-column-start: 2;
+                    grid-row-start: 2;
+                }
+            }
+            @media (max-width: 1000px) {
+                .grid-sidemeny {
+                    display: none;
+                }
+                .grid-artikkel {
+                    grid-column-start: 1;
+                    grid-column-end: span 2;
+                    grid-row-start: 2;
+                }
+                h1 {
+                    font-size: 7.2vw;
+                }
+            }
+            .sidemeny {
+                list-style-position: inside;
+                margin: 0;
+                padding: 0;
+                display: block;
+            }
+            .sidemeny li {
+                padding-left: 15px;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            .sidemeny li a {
+                display: inline-block;
+                padding: 10px;
+                color: linen;
+                text-decoration: none;
+                text-shadow: 3px 3px 3px black;
+                width: 100%;
+
+                margin-left: -50px;
+                padding-left: 70px;
+
+                transition: 0.15s;
+            }
+            .sidemeny li:first-child a {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+            .sidemeny li:last-child a {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+            .sidemeny li a:hover {
+                background-color: rgba(0, 200, 80, 0.5);
+            }
+            .sidemeny li:not(:first-child) {
+                /* Alle punktene _unntatt øverste_ får en linje over seg
+                => stiplet linje mellom hver link på jumplisten */
+                border-top-width: 2px;
+                border-top-style: dotted;
+                border-top-color: linen;
+            }
+            .sidemeny li:first-child {
+                font-weight: bold;
+            }
+            .sidemeny li::marker {
+                content: "\2192";
+                color: linen;
+            }
+        </style>
     </head>
     <body>
         <header>
+            <label for="toppmeny-bryter">MENY</label>
+            <input type="checkbox" id="toppmeny-bryter">
             <nav>
                 <ul>
                     <li><a href="index.html">Forside</a></li>
@@ -18,61 +133,76 @@
             </nav>
         </header>
 
-        <main>
+        <main class="grid-container">
 
-            <h1>Pilestredet 35</h1>
-            
-            <img src="bilder/oslomet.png" alt="OsloMet campus picture" width="" height="">
-            <h2>Lorem ipsum</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
-            </p>
-            <p>
-                Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
-            </p>
-            <p>
-                Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
-            </p>
-            <h2>Sed bibendum</h2>
-            <p>
-                Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
-            </p>
-            <p>
-                Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
-            </p>
-            <h2>Proin ultricies</h2>
-            <p>
-                Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
-            </p>
-            <p>
-                Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
-            </p>
-            <p>
-                Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
-            </p>
-            <h2>Suspendisse euismod ex lacus</h2>
-            <p>
-                Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
-            </p>
-            <p>
-                Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
-            </p>
-            <h2>Fusce quis mi nulla</h2>
-            <p>
-                Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
-            </p>
-            <p>
-                Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
-            </p>
-            <p>
-                Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
-            </p>
+            <section class="grid-hovedbilde">
+                <h1 id="overskrift-pilestredet35">Pilestredet 35</h1>
+                <img src="bilder/oslomet.png" alt="OsloMet campus picture" width="2000" height="1000">
+            </section>
+
+            <section class="grid-sidemeny sticky">
+                <ul class="sidemeny">
+                    <li><a href="#overskrift-pilestredet35">Pilestredet 35</a></li>
+                    <li><a href="#overskrift-loremipsum">Lorem ipsum</a></li>
+                    <li><a href="#overskrift-sedbibendum">Sed bibendum</a></li>
+                    <li><a href="#overskrift-proinultricies">Proin ultricies</a></li>
+                    <li><a href="#overskrift-suspendisse">Suspendisse euismod</a></li>
+                    <li><a href="#overskrift-fuscequis">Fusce quis mi nulla</a></li>
+                </ul>
+            </section>
+
+            <article class="grid-artikkel">
+                <h2 id="overskrift-loremipsum">Lorem ipsum</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
+                </p>
+                <p>
+                    Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
+                </p>
+                <p>
+                    Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
+                </p>
+                <h2 id="overskrift-sedbibendum">Sed bibendum</h2>
+                <p>
+                    Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
+                </p>
+                <p>
+                    Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
+                </p>
+                <h2 id="overskrift-proinultricies">Proin ultricies</h2>
+                <p>
+                    Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
+                </p>
+                <p>
+                    Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
+                </p>
+                <p>
+                    Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
+                </p>
+                <h2 id="overskrift-suspendisse">Suspendisse euismod ex lacus</h2>
+                <p>
+                    Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit est vel ipsum varius mollis. Nullam aliquet ex vel enim gravida convallis. Cras arcu augue, hendrerit quis leo nec, mattis posuere lorem. Sed venenatis rhoncus nisi ut imperdiet. Quisque eu facilisis erat. Aenean accumsan rhoncus massa a congue. Pellentesque ut massa vel ipsum eleifend aliquet. Sed diam risus, commodo vitae nibh ut, consequat tempus justo.
+                </p>
+                <p>
+                    Proin ultricies sapien eu mollis condimentum. Phasellus ultricies vehicula sapien vel finibus. Proin et pretium sapien, quis consequat quam. Nullam molestie, metus eget aliquet consectetur, tortor libero ultrices odio, sit amet aliquet est tellus eget eros. Nullam iaculis urna at malesuada consequat. Maecenas at est cursus, porttitor orci in, placerat lacus. In pulvinar enim quis gravida vulputate. Nulla at sapien sed risus egestas dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat.
+                </p>
+                <h2 id="overskrift-fuscequis">Fusce quis mi nulla</h2>
+                <p>
+                    Fusce quis mi nulla. Quisque facilisis felis vel egestas cursus. Duis tortor neque, egestas non augue ut, semper varius augue. Fusce posuere fermentum augue a sollicitudin. Maecenas tristique, turpis ut iaculis convallis, enim eros porta quam, nec condimentum urna sem ut dolor. Vestibulum pharetra fermentum eleifend. Nunc erat leo, dictum in lacinia at, sodales eget lorem. Sed nec lacus nulla. In finibus pharetra magna, sed placerat ligula feugiat eget.
+                </p>
+                <p>
+                    Sed bibendum mi in neque sollicitudin interdum. Aliquam enim nunc, viverra quis lorem a, elementum blandit elit. Phasellus sed imperdiet purus, non placerat risus. Sed eu vehicula nulla, a congue lectus. Pellentesque lacinia placerat ex id iaculis. Donec est turpis, luctus in justo a, aliquet consequat tellus. Nam convallis diam ut lacus vulputate, id sollicitudin neque iaculis. Sed vitae finibus velit. Morbi eu turpis vel dolor volutpat commodo. Mauris eget diam lobortis, iaculis ipsum vitae, pharetra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec pellentesque lacus.
+                </p>
+                <p>
+                    Suspendisse euismod ex lacus, nec eleifend augue varius non. Donec molestie sit amet magna a iaculis. Phasellus varius sapien in mattis rutrum. Praesent fringilla mollis est ac ornare. In in purus lectus. Maecenas dignissim est nec ante iaculis, sit amet congue nibh ullamcorper. Maecenas euismod bibendum tincidunt. Vivamus dapibus, urna ut condimentum elementum, eros nibh fringilla risus, at pellentesque nisl sem sit amet odio. 
+                </p>
+            </article>
         </main>
 
     </body>
