@@ -250,6 +250,12 @@ footer {
 .footer-lenker {
     color: white;
     text-decoration: none;
+    transition: 1s;
+}
+
+.footer-lenker :hover {
+    cursor: pointer;
+    color: pink;
 }
 
 header, h2, .grid-sidemeny {
