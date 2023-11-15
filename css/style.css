@@ -23,7 +23,7 @@ body {
     margin: 0px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
     /* Smalere marginer for smalere skjermer */
     main {
         margin-left: 10px;
@@ -31,11 +31,11 @@ body {
     }
 }
 
-@media (min-width: 1301px) {
+@media (min-width: 1201px) {
     /* Brede marginer ellers. Ikke testet på ultra-widescreen */
     main {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 
@@ -230,14 +230,25 @@ footer {
     color: white;
     font-size: 18px;
     margin-left: 20px;
-    margin-top:50px;
-    margin-bottom: 50px; 
 }
 
-.grid-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 50px;
+@media (max-width: 1000px) {
+    .grid-footer {
+        display: grid;
+        justify-self: center;
+        row-gap: 50px;
+    }
+}
+@media (min-width: 1001px) {
+    .grid-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .footer-grid-sosialemedier {
