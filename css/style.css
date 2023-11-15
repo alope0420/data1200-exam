@@ -137,7 +137,6 @@ h1 {
 
 h2 {
     font-size: 28px;
-    margin-top: 0px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
@@ -145,10 +144,6 @@ h2 {
     background-image: var(--bar-background);
     color: linen;
     border-radius: 10px;
-}
-
-img + h2 {
-    /* Unngå at overskrifter kommer altfor tett på bilder som er rett over */
     margin-top: 25px;
 }
 
@@ -222,6 +217,10 @@ footer {
     .topical-grid-innhold div {
         grid-row-start: 1;
     }
+}
+
+.topical-grid-innhold h2  {
+    margin-top: 0px;
 }
 
 .footer-tekst {
