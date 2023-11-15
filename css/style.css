@@ -256,6 +256,7 @@ footer {
 .footer-lenker :hover {
     cursor: pointer;
     color: pink;
+    text-decoration: underline;
 }
 
 header, h2, .grid-sidemeny {
