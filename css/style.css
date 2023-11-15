@@ -237,6 +237,15 @@ footer {
     column-gap: 50px;
 }
 
+.footer-grid-sosialemedier {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+}
+
+.bilder-footer {
+    width: 50px;
+}
 
 header, h2, .grid-sidemeny {
     box-shadow: 2px 2px 5px black;
