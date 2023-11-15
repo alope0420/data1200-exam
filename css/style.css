@@ -4,12 +4,6 @@ html {
 
     /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
     scroll-padding-top: 120px;
-    
-    /* Slik at vi kan få elementer som footer helt ut til kantene */
-    margin: 0px;
-
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
 
     /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
     /* Vi bruker en variabel for å slippe å kopiere hele koden til flere steder */
@@ -20,6 +14,13 @@ html {
     /* Tengel vil ha en link til siden der man finner bildet, men han er ikke så opptatt av fotograf, årstall osv. */
     /* TODO: Bearbeid bildet slik at det repeater bedre. Akkurat nå er det en "skarp kant" der det repeates */
 
+}
+
+body {    
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    /* Slik at vi kan få elementer som footer helt ut til kantene */
+    margin: 0px;
 }
 
 @media (max-width: 1300px) {
