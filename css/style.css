@@ -1,4 +1,3 @@
-
 html {
     /* Jevn rulling ved klikk på jumplinker */
     scroll-behavior: smooth;
@@ -123,9 +122,16 @@ label {
     }
 }
 
-h1 {
+/*h1 {
     font-size: 48px;
     font-weight: bold;
+}*/
+h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 72px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -229,4 +235,109 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 50px;
+}
+
+
+header, h2, .grid-sidemeny {
+    box-shadow: 2px 2px 5px black;
+}
+/*
+header {
+    box-shadow:
+        2px 2px 5px black,
+        0px -1000px 0px 1000px white;
+}*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    row-gap: 25px;
+    column-gap: 25px;
+}
+.grid-hovedbilde {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-start: 1;
+}
+.grid-sidemeny {
+    background-image: var(--bar-background);
+    border-radius: 10px;
+
+    /* Lås sidemenyens posisjon når brukeren ruller langt nok ned */
+    /* align-self forhindrer blokken fra å fylle grid-cellen, slik at den har plass til å bevege seg */
+    position: sticky;
+    top: 120px;
+    align-self: start;
+    
+}
+@media (min-width: 1001px) {
+    .grid-sidemeny {
+        grid-column-start: 1;
+        grid-row-start: 2;
+    }
+    .grid-artikkel {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+}
+@media (max-width: 1000px) {
+    .grid-sidemeny {
+        display: none;
+    }
+    .grid-artikkel {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+    }
+    h1 {
+        font-size: 7.2vw;
+    }
+}
+.sidemeny {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.sidemeny li {
+    padding-left: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.sidemeny li a {
+    display: inline-block;
+    padding: 10px;
+    color: linen;
+    text-decoration: none;
+    text-shadow: 3px 3px 3px black;
+    width: 100%;
+
+    margin-left: -50px;
+    padding-left: 70px;
+
+    transition: 0.15s;
+}
+.sidemeny li:first-child a {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sidemeny li:last-child a {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.sidemeny li a:hover {
+    background-color: rgba(0, 200, 80, 0.5);
+}
+.sidemeny li:not(:first-child) {
+    /* Alle punktene _unntatt øverste_ får en linje over seg
+    => stiplet linje mellom hver link på jumplisten */
+    border-top-width: 2px;
+    border-top-style: dotted;
+    border-top-color: linen;
+}
+.sidemeny li:first-child {
+    font-weight: bold;
+}
+.sidemeny li::marker {
+    content: "\2192";
+    color: linen;
 }
