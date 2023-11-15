@@ -163,7 +163,6 @@ img {
 
 footer {
     width: 100%;
-    height: 300px;
     background-color: rgb(1, 30, 1);
 }
 
@@ -223,6 +222,7 @@ footer {
 
 .topical-grid-innhold h2  {
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .footer-tekst {
@@ -230,7 +230,8 @@ footer {
     color: white;
     font-size: 18px;
     margin-left: 20px;
-    margin-top:50px
+    margin-top:50px;
+    margin-bottom: 50px; 
 }
 
 .grid-footer {
@@ -242,11 +243,49 @@ footer {
 .footer-grid-sosialemedier {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     column-gap: 30px;
+    row-gap: 10px;
 }
 
 .bilder-footer {
     width: 50px;
+}
+
+.footer-grid-bildeplassering {
+    justify-self: end;
+}
+
+.footer-lenker {
+    color: white;
+    text-decoration: none;
+    transition: 0,5s;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.footer-lenker:hover {
+    cursor: pointer;
+    color: rgb(180, 1, 1);
+    text-decoration: underline;
+}
+
+.footer-grid-bildeplassering {
+    justify-self: end;
+}
+
+.footer-lenker {
+    color: white;
+    text-decoration: none;
+    transition: 0,5s;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.footer-lenker:hover {
+    cursor: pointer;
+    color: rgb(180, 1, 1);
+    text-decoration: underline;
 }
 
 h2, .grid-sidemeny {
