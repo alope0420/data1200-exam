@@ -250,12 +250,12 @@ footer {
 .footer-lenker {
     color: white;
     text-decoration: none;
-    transition: 1s;
+    transition: 0,5s;
 }
 
 .footer-lenker:hover {
     cursor: pointer;
-    color: pink;
+    color: rgb(180, 1, 1);
     text-decoration: underline;
 }
 
