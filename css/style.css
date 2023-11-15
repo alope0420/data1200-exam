@@ -122,11 +122,6 @@ label {
     #toppmeny-bryter:checked + nav {
         max-height: 500px;
     }
-
-    nav li:last-child a:hover {
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-    }
 }
 
 h1 {
