@@ -240,6 +240,7 @@ footer {
 .footer-grid-sosialemedier {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
     column-gap: 30px;
 }
 
@@ -247,10 +248,15 @@ footer {
     width: 50px;
 }
 
+.footer-grid-bildeplassering {
+    justify-self: end;
+}
+
 .footer-lenker {
     color: white;
     text-decoration: none;
     transition: 0,5s;
+    justify-self: start;
 }
 
 .footer-lenker:hover {
