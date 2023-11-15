@@ -240,8 +240,9 @@ footer {
 .footer-grid-sosialemedier {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr 1fr;
     column-gap: 30px;
+    row-gap: 10px;
 }
 
 .bilder-footer {
@@ -256,7 +257,8 @@ footer {
     color: white;
     text-decoration: none;
     transition: 0,5s;
-    justify-self: start;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .footer-lenker:hover {
