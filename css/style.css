@@ -41,15 +41,21 @@ body {
 
 header {
     background-image: var(--bar-background);
-
-    /* Gi navbaren runde hjørner og litt avstand fra kanten av vinduet */
-    border-radius: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-
     min-height: 76px;
     text-align: center;
+}
+
+@media (min-width: 1001px) {
+    header {
+        /* Gi navbaren runde hjørner og litt avstand fra kanten av vinduet */
+        border-radius: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 1000px) {
+
 }
 
 nav ul {
@@ -123,10 +129,6 @@ label {
     }
 }
 
-/*h1 {
-    font-size: 48px;
-    font-weight: bold;
-}*/
 h1 {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 72px;
@@ -247,15 +249,15 @@ footer {
     width: 50px;
 }
 
-header, h2, .grid-sidemeny {
+h2, .grid-sidemeny {
     box-shadow: 2px 2px 5px black;
 }
-/*
+
 header {
     box-shadow:
         2px 2px 5px black,
-        0px -1000px 0px 1000px white;
-}*/
+        0px -1019px 19px 1000px white;
+}
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
