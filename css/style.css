@@ -389,5 +389,9 @@ header {
 }
 .bilde-makerspace{
     float: right;
+    width: 35%;
+}
+.bilde-laserkutter{
+    float: right;
     width: 30%;
 }
