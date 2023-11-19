@@ -25,31 +25,33 @@
             <!--
                 Short presentation of accessibility for your site. Test your site with an automated test. Write a very short text (about 400-500 words) about how you tested the code for accessibility using this automated test. Tell us how you checked, and coding choices you made for universal design beyond what an automated test could tell you. You are recommended to use screenshots from the testing site and of your code – lack of images may affect your score.
             -->
-            <h1>Accessibility</h1>
+            <h1>Tilgjengelighet</h1>
 
-            <h2>Overview</h2>
             <p>
-                We used <a class="link" href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> for accessibility testing. Since we were multiple students working in parallel, accessibility testing started before most pages were finished, and was repeated multiple times to ensure the final product retained an acceptable accessibility score. This approach also helped to inform our development practices as we were working on the project.
+                Vi brukte i hovedsak <a class="link" href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> gjennom mesteparten av utviklingsprosessen for å sikre nettstedets tilgjengelighet. Vi begynte tidlig og testet kontinuerlig gjennom hele prosjektet for å holde oss bevisst på god tilgjengelighetspraksis, slik at dette ble implementert fortløpende.
+
+                Da prosjektet nærmet seg ferdig, testet vi også ...
             </p>
 
-            <h2>Initial test</h2>
+            <h2>Kontraster</h2>
             <!-- <img src="bilder/tilgjengelighet/initial-report.webp" alt="Overview from Lighthouse report showing scores of 100 for Performance and Best Practices, 75 for Accessibility, 70 for SEO and no score for PWA"> -->
             <p>
-                Davide De Giovanni (Photographer). (2018). Four Women Sitting Inside Fendi Cinema [Photograph], <a class="link" href="https://www.pexels.com/photo/four-women-sitting-inside-fendi-cinema-1649683/">pexels.com</a>
-            </p>
-            <p>
-                The initial accessibility test, run quite early in development with only one page being close to finished, revealed just a couple of problems.
+                Den første testen, som skjedde svært tidlig i utviklingen, gjorde oss oppmerksomme på at vi måtte være bevisst på fargevalgene våre. Vi brukte plassholder-farger med hvit tekst på oransje bakgrunn i header og footer. Vi endret bakgrunnen til et mørkegrønt bilde for å gi bedre kontrast mot den hvite teksten, slik at den ble mer leselig.
                 <!-- Mention performance bugs if char limit allows -->
-                We were missing <code>alt</code> and <code>width</code>/<code>height</code> attributes for most of our images, which was a simple fix. Lighthouse also advised us about low color legibility in certain areas of the website, though at this point, the design was not finalized yet, so we merely took this as a reminder to consider contrasts when selecting colors further down the line.
-                <!-- Mention SEO if char limit allows -->
-                <!-- TODO: Image of code -->
             </p>
-            
 
-            <h2>Final touches</h2>
+            <h2>Bildeattributter</h2>
             <p>
-                Realizing that an automated accessibility test would only get us so far, we decided to ... before submitting the project.
+                Vi ble også tidlig minnet om viktigheten av attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer. Før innlevering tok vi en runde gjennom alle sidene og la til disse der de manglet. <code>alt</code>-attributtene sørger for at bildene er forståelige for brukere av assisterende teknologi (f.eks. skjermlesere), mens <code>width</code> og <code>height</code> gjør at nettleseren slipper å rekalkulere layouten etter hvert som bildene lastes inn, ettersom den allerede vet hvor store de kommer til å være.
             </p>
+
+            <h2>Ulike visningsformater</h2>
+            <p>
+                Vi måtte gjøre en del justeringer for å få nettstedet til å se bra ut både på datamaskin og på mobil, noe vi oppnådde ved bruk av media queries. Vi kom frem til at den svevende, avrundede menylinjen tok seg dårlig ut på smale mobilskjermer, så under en viss skjermbredde valgte vi å la menyen gå helt ut til kantene og dessuten &laquo;kollapse&raquo; til ett enkelt element man kan klikke på for å vise hele menyen.
+            </p>
+
+            <!-- Mention SEO if char limit allows -->
+            <!-- TODO: Image of code -->
             
         </main>
     </body>
