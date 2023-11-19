@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
     <head>
-        <title>INSERT TITLE HERE</title>
+        <title>Tilgjengelighet</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -28,6 +28,10 @@
             <h1>Tilgjengelighet</h1>
 
             <p>
+                Gjøres ferdig på mandag eller tirsdag morgen :)
+            </p>
+
+            <p>
                 Vi brukte i hovedsak <a class="link" href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> gjennom mesteparten av utviklingsprosessen for å sikre nettstedets tilgjengelighet. Vi begynte tidlig og testet kontinuerlig gjennom hele prosjektet for å holde oss bevisst på god tilgjengelighetspraksis, slik at dette ble implementert fortløpende.
 
                 Da prosjektet nærmet seg ferdig, testet vi også ...
@@ -50,7 +54,23 @@
                 Vi måtte gjøre en del justeringer for å få nettstedet til å se bra ut både på datamaskin og på mobil, noe vi oppnådde ved bruk av media queries. Vi kom frem til at den svevende, avrundede menylinjen tok seg dårlig ut på smale mobilskjermer, så under en viss skjermbredde valgte vi å la menyen gå helt ut til kantene og dessuten &laquo;kollapse&raquo; til ett enkelt element man kan klikke på for å vise hele menyen.
             </p>
 
-            <!-- Mention SEO if char limit allows -->
+            <h2>Andre overveielser</h2>
+            <p>
+                Automatisert testing via Lighthouse var nyttig, men vi har også vurdert tilgjengelighetshensyn utover det tester kan fortelle oss. Vi har gått gjennom <a href="https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708">en sjekkliste hos uutilsynets</a> med viktige punkter det bør tas stilling til. (Vi har også gått gjennom <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">WCAG 2 at a Glance</a>...)
+                <ol>
+                    <li>Tastaturnavigering: </li>
+                    <li>Forstørring og responsivt design</li>
+                    <li>Farger og kontrast</li>
+                    <li>Overskrifter</li>
+                    <li>Lenker</li>
+                    <li>Bilder</li>
+                    <li>Skjema</li>
+                    <li>Søkefunksjonen: Ikke aktuelt. Vi skulle gjerne laget en søkefunksjon, men så vidt vi forstår, er det ikke mulig med kun HTML og CSS.</li>
+                    <li>Sidetitler</li>
+                    <li>Kodevalidering</li>
+                </ul>
+            </p>
+
             <!-- TODO: Image of code -->
             
         </main>
