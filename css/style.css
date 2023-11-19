@@ -8,17 +8,17 @@ html {
     /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
     /* Vi bruker en variabel for å slippe å kopiere hele koden til flere steder */
     --bar-background: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
-    url(../bilder/bakgrunn-redigert.jpg); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.jpg*/
+    url(../bilder/bakgrunn-redigert.webp); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.webp*/
 
     /* TODO: Skikkelig kildehenvisning for bildet over. */
     /* Tengel vil ha en link til siden der man finner bildet, men han er ikke så opptatt av fotograf, årstall osv. */
-
 }
 
 body {    
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
-    /* Slik at vi kan få elementer som footer helt ut til kantene */
+
+    /* Gjør det mulig å la enkelte elementer (f.eks. footer) gå helt ut til kantene */
     margin: 0px;
 }
 
@@ -40,9 +40,10 @@ body {
 
 header {
     background-image: var(--bar-background);
-    background-position: center;
-    min-height: 76px;
-    text-align: center;
+
+    /* Midtstill bildet horisontalt. Ser bedre ut siden bildet er symmetrisk. */
+    /* Unngå vertikal midtstilling. Ser rart ut når man åpner/lukker menyen. */
+    background-position: center top;
 }
 
 nav ul {
