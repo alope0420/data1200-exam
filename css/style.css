@@ -2,9 +2,6 @@ html {
     /* Jevn rulling ved klikk på jumplinker */
     scroll-behavior: smooth;
 
-    /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
-    scroll-padding-top: 120px;
-
     /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
     /* Vi bruker en variabel for å slippe å kopiere hele koden til flere steder */
     --bar-background: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
@@ -12,13 +9,26 @@ html {
 
     /* TODO: Skikkelig kildehenvisning for bildet over. */
     /* Tengel vil ha en link til siden der man finner bildet, men han er ikke så opptatt av fotograf, årstall osv. */
+
+    --bar-hover-farge: rgba(0, 200, 80, 0.5);
+    --bar-tekst-farge: linen;
 }
+
+@media (min-width: 1001px) {
+    html {
+        /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
+        scroll-padding-top: 120px;
+    }
+}
+
+/* TODO: Fiks skygge på meny i smal modus */
+/* TODO: overgangspunkter for bredde => variabler ? */
 
 body {    
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
 
-    /* Gjør det mulig å la enkelte elementer (f.eks. footer) gå helt ut til kantene */
+    /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
     margin: 0px;
 }
 
@@ -41,10 +51,29 @@ body {
 header {
     background-image: var(--bar-background);
 
-    /* Midtstill bildet horisontalt. Ser bedre ut siden bildet er symmetrisk. */
-    /* Unngå vertikal midtstilling. Ser rart ut når man åpner/lukker menyen. */
+    /* Midtstill bildet horisontalt. Bildet er symmetrisk, så dette ser bedre ut. */
+    /* Unngå derimot vertikal midtstilling, noe som ser rart ut når menyen åpnes og lukkes. */
     background-position: center top;
+
+    /* Midtstill bl.a. menypunkter */
+    text-align: center;
 }
+
+/*
+#hovedinnhold-snarvei {
+    display: inline-block;
+    color: var(--bar-tekst-farge);
+    padding: 10px;
+
+    position: absolute;
+    top: -1000px;
+}
+#hovedinnhold-snarvei:focus {
+    position: relative;
+    top: auto;
+    font-size: 40px;
+}
+*/
 
 #toppmeny-bryter {
     display: none;
@@ -56,16 +85,13 @@ label {
     text-align: right;
     padding: 20px;
     height: 32px;
-    color: linen;
+    color: var(--bar-tekst-farge);
 
     /* La elementet gå fra kant til kant => gjør hele menylinjen klikkbar */
     display: block;
 }
 
 nav ul {
-    /* Midtstill elementene på menyen */ /*, inkludert label-elementet for "Meny"*/
-    text-align: center;
-
     /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
     padding: 0;
     margin: 0;
@@ -75,7 +101,7 @@ nav ul {
 }
 
 nav a {
-    color: linen;
+    color: var(--bar-tekst-farge);
     text-decoration-line: none;
     font-size: 22px;
     font-weight: bold;
@@ -85,14 +111,19 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgba(0, 200, 80, 0.5);
+    background-color: var(--bar-hover-farge);
 }
 
 h1 {
+    /*
+    For h1 ønsker vi i utgangspunktet en skriftstørrelse på 72px, men det blir litt voldsomt på små skjermer,
+    så når skjermen blir mindre enn 1000px bred, går vi over til å skalere h1 til 7,2 % av skjermbredden.
+    Vi har likevel en minimumsstørrelse på 28px for at h1 ikke skal bli mindre enn h2.
+    */
+    font-size: min(72px, max(7.2vw, 28px));
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 72px;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -103,7 +134,7 @@ h2 {
     padding-top: 10px;
     padding-bottom: 10px;
     background-image: var(--bar-background);
-    color: linen;
+    color: var(--bar-tekst-farge);
     border-radius: 10px;
     margin-top: 25px;
 }
@@ -112,9 +143,7 @@ h2 {
     header {
         /* Gi navbaren runde hjørner og litt avstand fra kanten av vinduet */
         border-radius: 30px;
-        margin-left: 15px;
-        margin-right: 15px;
-        margin-top: 15px;
+        margin: 15px;
         position: sticky;
         top: 20px;
     }
@@ -131,6 +160,7 @@ h2 {
 }
 
 @media (max-width: 1000px) {
+    /* TODO: kildehenvisning */
     nav {
         max-height: 0px;
         overflow: hidden;
@@ -139,16 +169,158 @@ h2 {
         transition-timing-function: ease-out;
     }
     #toppmeny-bryter:checked + nav {
+        /*
+        Den eksakte verdien for max-height er ikke kjempenøye, så lenge den er minst like stor som menyens makshøyde.
+        Men om den er altfor stor, går transition-effekten i praksis mye raskere enn angitt ovenfor.
+        */
         max-height: 500px;
     }
-    h1 {
-        /*
-        En overskrift på 72px blir litt voldsomt på små skjermer, så når skjermen blir
-        mindre enn 1000px bred, går vi over til å skalere h1 til 7,2 % av skjermbredden.
-        Vi går likevel for en minimumsstørrelse på 28px for at den ikke skal bli mindre enn h2.
-        */
-        font-size: max(28px, 7.2vw);
+}
+
+h2, .grid-sidemeny {
+    box-shadow: 2px 2px 5px black;
+}
+
+header {
+    box-shadow:
+        2px 2px 5px black,
+        0px -1019px 19px 1000px white;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    row-gap: 25px;
+    column-gap: 25px;
+}
+.grid-hovedbilde {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-start: 1;
+}
+.grid-sidemeny {
+    background-image: var(--bar-background);
+    border-radius: 10px;
+
+    /* Lås sidemenyens posisjon når brukeren ruller langt nok ned */
+    /* align-self forhindrer blokken fra å fylle grid-cellen, slik at den har plass til å bevege seg */
+    position: sticky;
+    top: 120px;
+    align-self: start;
+    
+}
+@media (min-width: 1001px) {
+    .grid-sidemeny {
+        grid-column-start: 1;
+        grid-row-start: 2;
     }
+    .grid-artikkel {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+}
+@media (max-width: 1000px) {
+    .grid-sidemeny {
+        display: none;
+    }
+    .grid-artikkel {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+    }
+}
+.sidemeny {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    
+    --punkt-padding-topp-bunn: 10px;
+    --punkt-padding-venstre-høyre: 15px;
+    --punkttekst-punkttegn-avstand: 20px;
+    --punkttegn-bredde: 20px;
+}
+.sidemeny li {
+    padding-left: var(--punkt-padding-venstre-høyre);
+    padding-right: var(--punkt-padding-venstre-høyre);
+    
+    /* Tving punkttegnet og punktteksten til å holde seg på én linje */
+    white-space: nowrap; 
+}
+.sidemeny li a {
+    /* Vi vil at bakgrunnsfargen ved hover skal gå ut til kantene av listepunktet, ellers ser effekten merkelig ut, så vi trenger blokkstiler. */
+    display: inline-block;
+
+    /*
+    Vi vil også at bakgrunnsfargen skal dekke selve punkttegnet, så vi bruker negativ margin
+    tilsvarende listepunktets padding + punkttegnets bredde for å komme helt til kanten av listen.
+    */
+    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-høyre) + var(--punkttegn-bredde));
+    margin-left: calc(0px - var(--punkttekst-beregnet-margin-venstre));
+
+    /*
+    For at punktteksten ikke også skal havne helt ut i kanten, kompenserer vi med tilsvarende padding,
+    men legger på noen ekstra piksler for å få luft mellom punkttegnet og punktteksten.
+    */
+    --punkttekst-beregnet-padding-venstre: calc(var(--punkttekst-beregnet-margin-venstre) + var(--punkttekst-punkttegn-avstand));
+    padding-left: var(--punkttekst-beregnet-padding-venstre);
+
+    /*
+    Vi må kompensere tilsvarende i width-egenskapen for at hover-effekten skal bli nøyaktig slik vi ønsker.
+    Hjørneavrundingen blir ikke riktig uten dette.
+    */
+    width: calc(100%
+        - var(--punkttekst-beregnet-padding-venstre)
+        + var(--punkt-padding-venstre-høyre) * 2
+    );
+
+    padding-top: var(--punkt-padding-topp-bunn);
+    padding-bottom: var(--punkt-padding-topp-bunn);
+    color: var(--bar-tekst-farge);
+    text-decoration: none;
+    text-shadow: 3px 3px 3px black;
+    transition: 0.15s;
+}
+
+/* Sørg for riktig hjørneavrunding på første og siste punkt på jumplink-listen. */
+.sidemeny li:first-child a {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sidemeny li:last-child a {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.sidemeny li a:hover {
+    background-color: rgba(0, 200, 80, 0.5);
+}
+.sidemeny li:not(:first-child) {
+    /*
+    Alle punktene, *unntatt øverste*, får en linje over seg
+    => vi får stiplede linjer mellom hver av linkene på jumplisten
+    */
+    border-top-width: 2px;
+    border-top-style: dotted;
+    border-top-color: var(--bar-tekst-farge);
+}
+.sidemeny li:first-child {
+    /* Uthev den første jumplinken, som korresponderer med h1 på siden */
+    font-weight: bold;
+}
+.sidemeny li::marker {
+    content: "\2192"; /* pil-ikon */
+
+    /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
+    font-size: var(--punkttegn-bredde);
+    font-weight: initial;
+    color: var(--bar-tekst-farge);
+}
+.bilde-makerspace {
+    float: right;
+    width: 35%;
+}
+.bilde-laserkutter {
+    float: right;
+    width: 30%;
 }
 
 p {
@@ -297,150 +469,4 @@ footer {
     cursor: pointer;
     color: rgb(180, 1, 1);
     text-decoration: underline;
-}
-
-h2, .grid-sidemeny {
-    box-shadow: 2px 2px 5px black;
-}
-
-header {
-    box-shadow:
-        2px 2px 5px black,
-        0px -1019px 19px 1000px white;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    row-gap: 25px;
-    column-gap: 25px;
-}
-.grid-hovedbilde {
-    grid-column-start: 1;
-    grid-column-end: span 2;
-    grid-row-start: 1;
-}
-.grid-sidemeny {
-    background-image: var(--bar-background);
-    border-radius: 10px;
-
-    /* Lås sidemenyens posisjon når brukeren ruller langt nok ned */
-    /* align-self forhindrer blokken fra å fylle grid-cellen, slik at den har plass til å bevege seg */
-    position: sticky;
-    top: 120px;
-    align-self: start;
-    
-}
-@media (min-width: 1001px) {
-    .grid-sidemeny {
-        grid-column-start: 1;
-        grid-row-start: 2;
-    }
-    .grid-artikkel {
-        grid-column-start: 2;
-        grid-row-start: 2;
-    }
-}
-@media (max-width: 1000px) {
-    .grid-sidemeny {
-        display: none;
-    }
-    .grid-artikkel {
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        grid-row-start: 2;
-    }
-}
-.sidemeny {
-    list-style-position: inside;
-    margin: 0;
-    padding: 0;
-    
-    --punkt-padding-topp-bunn: 10px;
-    --punkt-padding-venstre-høyre: 15px;
-    --punkttekst-punkttegn-avstand: 20px;
-    --punkttegn-bredde: 20px;
-}
-.sidemeny li {
-    padding-left: var(--punkt-padding-venstre-høyre);
-    padding-right: var(--punkt-padding-venstre-høyre);
-    
-    /* Tving punkttegnet og punktteksten til å holde seg på én linje */
-    white-space: nowrap; 
-}
-.sidemeny li a {
-    /* Vi vil at bakgrunnsfargen ved hover skal gå ut til kantene av listepunktet, ellers ser effekten merkelig ut, så vi trenger blokkstiler. */
-    display: inline-block;
-
-    /*
-    Vi vil også at bakgrunnsfargen skal dekke selve punkttegnet, så vi bruker negativ margin
-    tilsvarende listepunktets padding + punkttegnets bredde for å komme helt til kanten av listen.
-    */
-    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-høyre) + var(--punkttegn-bredde));
-    margin-left: calc(0px - var(--punkttekst-beregnet-margin-venstre));
-
-    /*
-    For at punktteksten ikke også skal havne helt ut i kanten, kompenserer vi med tilsvarende padding,
-    men legger på noen ekstra piksler for å få luft mellom punkttegnet og punktteksten.
-    */
-    --punkttekst-beregnet-padding-venstre: calc(var(--punkttekst-beregnet-margin-venstre) + var(--punkttekst-punkttegn-avstand));
-    padding-left: var(--punkttekst-beregnet-padding-venstre);
-
-    /*
-    Vi må kompensere tilsvarende i width-egenskapen for at hover-effekten skal bli nøyaktig slik vi ønsker.
-    Hjørneavrundingen blir ikke riktig uten dette.
-    */
-    width: calc(100%
-        - var(--punkttekst-beregnet-padding-venstre)
-        + var(--punkt-padding-venstre-høyre) * 2
-    );
-
-    padding-top: var(--punkt-padding-topp-bunn);
-    padding-bottom: var(--punkt-padding-topp-bunn);
-    color: linen;
-    text-decoration: none;
-    text-shadow: 3px 3px 3px black;
-    transition: 0.15s;
-}
-
-/* Sørg for riktig hjørneavrunding på første og siste punkt på jumplink-listen. */
-.sidemeny li:first-child a {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.sidemeny li:last-child a {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.sidemeny li a:hover {
-    background-color: rgba(0, 200, 80, 0.5);
-}
-.sidemeny li:not(:first-child) {
-    /*
-    Alle punktene, *unntatt øverste*, får en linje over seg
-    => vi får stiplede linjer mellom hver av linkene på jumplisten
-    */
-    border-top-width: 2px;
-    border-top-style: dotted;
-    border-top-color: linen;
-}
-.sidemeny li:first-child {
-    /* Uthev den første jumplinken, som korresponderer med h1 på siden */
-    font-weight: bold;
-}
-.sidemeny li::marker {
-    content: "\2192"; /* pil-ikon */
-
-    /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
-    font-size: var(--punkttegn-bredde);
-    font-weight: initial;
-    color: linen;
-}
-.bilde-makerspace {
-    float: right;
-    width: 35%;
-}
-.bilde-laserkutter {
-    float: right;
-    width: 30%;
 }
