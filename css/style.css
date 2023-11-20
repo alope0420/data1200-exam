@@ -44,12 +44,28 @@ header {
     /* Midtstill bildet horisontalt. Ser bedre ut siden bildet er symmetrisk. */
     /* Unngå vertikal midtstilling. Ser rart ut når man åpner/lukker menyen. */
     background-position: center top;
+}
 
-    /* Midtstill elementene på menyen, inkludert label-elementet for "Meny" */
-    text-align: center;
+#toppmeny-bryter {
+    display: none;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+    text-align: right;
+    padding: 20px;
+    height: 32px;
+    color: linen;
+
+    /* La elementet gå fra kant til kant => gjør hele menylinjen klikkbar */
+    display: block;
 }
 
 nav ul {
+    /* Midtstill elementene på menyen */ /*, inkludert label-elementet for "Meny"*/
+    text-align: center;
+
     /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
     padding: 0;
     margin: 0;
@@ -58,9 +74,9 @@ nav ul {
     list-style-type: none;
 }
 
-nav a, label {
-    text-decoration-line: none;
+nav a {
     color: linen;
+    text-decoration-line: none;
     font-size: 22px;
     font-weight: bold;
     padding: 25px;
@@ -72,13 +88,24 @@ nav a:hover {
     background-color: rgba(0, 200, 80, 0.5);
 }
 
-#toppmeny-bryter {
-    display: none;
+h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 72px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-label {
-    user-select: none;
-    cursor: pointer;
+h2 {
+    font-size: 28px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: var(--bar-background);
+    color: linen;
+    border-radius: 10px;
+    margin-top: 25px;
 }
 
 @media (min-width: 1001px) {
@@ -114,26 +141,14 @@ label {
     #toppmeny-bryter:checked + nav {
         max-height: 500px;
     }
-}
-
-h1 {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 72px;
-    text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 28px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-image: var(--bar-background);
-    color: linen;
-    border-radius: 10px;
-    margin-top: 25px;
+    h1 {
+        /*
+        En overskrift på 72px blir litt voldsomt på små skjermer, så når skjermen blir
+        mindre enn 1000px bred, går vi over til å skalere h1 til 7,2 % av skjermbredden.
+        Vi går likevel for en minimumsstørrelse på 28px for at den ikke skal bli mindre enn h2.
+        */
+        font-size: max(28px, 7.2vw);
+    }
 }
 
 p {
@@ -141,7 +156,7 @@ p {
     line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
 }
 
-img {
+main img {
     /* La bilder fylle hele bredden av forelder-elementet som standard */
     /* Da ser det meste greit ut på mobil, og vi kan bruke div-er til å begrense størrelsen der det trengs i andre formater */
     width: 100%;
@@ -162,7 +177,7 @@ footer {
 
 .link:hover {
     color: rgb(180, 1, 1);
-    text-shadow: 5px 5px 5px rgb(140, 135, 135);
+    text-shadow: 2px 2px 3px rgb(140, 135, 135);
 }
 
 .fotograf {
@@ -334,34 +349,60 @@ header {
         grid-column-end: span 2;
         grid-row-start: 2;
     }
-    h1 {
-        font-size: 7.2vw;
-    }
 }
 .sidemeny {
     list-style-position: inside;
     margin: 0;
     padding: 0;
-    display: block;
+    
+    --punkt-padding-topp-bunn: 10px;
+    --punkt-padding-venstre-høyre: 15px;
+    --punkttekst-punkttegn-avstand: 20px;
+    --punkttegn-bredde: 20px;
 }
 .sidemeny li {
-    padding-left: 15px;
-    overflow: hidden;
-    white-space: nowrap;
+    padding-left: var(--punkt-padding-venstre-høyre);
+    padding-right: var(--punkt-padding-venstre-høyre);
+    
+    /* Tving punkttegnet og punktteksten til å holde seg på én linje */
+    white-space: nowrap; 
 }
 .sidemeny li a {
+    /* Vi vil at bakgrunnsfargen ved hover skal gå ut til kantene av listepunktet, ellers ser effekten merkelig ut, så vi trenger blokkstiler. */
     display: inline-block;
-    padding: 10px;
+
+    /*
+    Vi vil også at bakgrunnsfargen skal dekke selve punkttegnet, så vi bruker negativ margin
+    tilsvarende listepunktets padding + punkttegnets bredde for å komme helt til kanten av listen.
+    */
+    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-høyre) + var(--punkttegn-bredde));
+    margin-left: calc(0px - var(--punkttekst-beregnet-margin-venstre));
+
+    /*
+    For at punktteksten ikke også skal havne helt ut i kanten, kompenserer vi med tilsvarende padding,
+    men legger på noen ekstra piksler for å få luft mellom punkttegnet og punktteksten.
+    */
+    --punkttekst-beregnet-padding-venstre: calc(var(--punkttekst-beregnet-margin-venstre) + var(--punkttekst-punkttegn-avstand));
+    padding-left: var(--punkttekst-beregnet-padding-venstre);
+
+    /*
+    Vi må kompensere tilsvarende i width-egenskapen for at hover-effekten skal bli nøyaktig slik vi ønsker.
+    Hjørneavrundingen blir ikke riktig uten dette.
+    */
+    width: calc(100%
+        - var(--punkttekst-beregnet-padding-venstre)
+        + var(--punkt-padding-venstre-høyre) * 2
+    );
+
+    padding-top: var(--punkt-padding-topp-bunn);
+    padding-bottom: var(--punkt-padding-topp-bunn);
     color: linen;
     text-decoration: none;
     text-shadow: 3px 3px 3px black;
-    width: 100%;
-
-    margin-left: -50px;
-    padding-left: 70px;
-
     transition: 0.15s;
 }
+
+/* Sørg for riktig hjørneavrunding på første og siste punkt på jumplink-listen. */
 .sidemeny li:first-child a {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -370,28 +411,36 @@ header {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
 .sidemeny li a:hover {
     background-color: rgba(0, 200, 80, 0.5);
 }
 .sidemeny li:not(:first-child) {
-    /* Alle punktene _unntatt øverste_ får en linje over seg
-    => stiplet linje mellom hver link på jumplisten */
+    /*
+    Alle punktene, *unntatt øverste*, får en linje over seg
+    => vi får stiplede linjer mellom hver av linkene på jumplisten
+    */
     border-top-width: 2px;
     border-top-style: dotted;
     border-top-color: linen;
 }
 .sidemeny li:first-child {
+    /* Uthev den første jumplinken, som korresponderer med h1 på siden */
     font-weight: bold;
 }
 .sidemeny li::marker {
-    content: "\2192";
+    content: "\2192"; /* pil-ikon */
+
+    /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
+    font-size: var(--punkttegn-bredde);
+    font-weight: initial;
     color: linen;
 }
-.bilde-makerspace{
+.bilde-makerspace {
     float: right;
     width: 35%;
 }
-.bilde-laserkutter{
+.bilde-laserkutter {
     float: right;
     width: 30%;
 }
