@@ -27,14 +27,14 @@
 
             <h1>Tilgjengelighet</h1>
             <p>
-                Vi brukte i hovedsak <a href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> gjennom mesteparten av utviklingsprosessen for å sikre nettstedets tilgjengelighet. Vi begynte tidlig og testet kontinuerlig gjennom hele prosjektet for å holde oss bevisst på god tilgjengelighetspraksis, slik at dette ble implementert fortløpende. Siden Lighthouse ikke er altvitende, har vi også vurdert tilgjengelighetshensyn utover det tester kan fortelle oss. Vi har gått gjennom <a href="https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708">en sjekkliste hos uutilsynets</a> med viktige punkter det bør tas stilling til. (Vi har også gått gjennom <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">WCAG 2 at a Glance</a>...)
+                Vi brukte i hovedsak <a href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> gjennom mesteparten av utviklingsprosessen for å sikre nettstedets tilgjengelighet. Vi begynte tidlig og testet kontinuerlig gjennom hele prosjektet for å sørge for at god tilgjengelighetspraksis ble fulgt fortløpende. For å vurdere tilgjengelighetshensyn utover det tester kan fortelle oss, har vi også gått gjennom en sjekkliste med viktig punkter hos uutilsynet (<a href="https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708">Sjekk nettstedet ditt selv &ndash; uutilsynet.no</a>). Nedenfor har vi oppsummert hva vi har gjort for å etterleve disse punktene.
             </p>
 
             <h2>Tastaturnavigering</h2>
             <p>
                 Vi har kontrollert at tab-rekkefølgen virker fornuftig, og at alle relevante elementer er fokuserbare og har tydelige fokusmarkeringer.
                 <!-- ikke øverste menyelement eller selve meny-inputen -->
-                En snarveilenke fra toppen av siden og ned til innholdet virker lite hensiktsmessig når vi har en såpass slank menylinje.
+                En snarveilenke fra toppen av siden og ned til innholdet virker imidlertid lite hensiktsmessig når vi har en såpass slank menylinje.
             </p>
 
             <h2>Forstørring og responsivt design</h2>
@@ -42,34 +42,33 @@
                 Nettstedet ser ut til å fungere godt ved både 200&nbsp;% og 400&nbsp;% forstørring. Videre har vi gjort mange bevisste grep for å oppnå et responsivt design som fungerer godt på både bred og smal skjerm:
             </p>
             <ul>
-                <li>
-                    Datamaskinversjonen av nettstedet har svevende menyer som følger rulleposisjonen for å forenkle navigeringen, men i mobilversjonen er de fastlåst og går helt ut til kantene for å utnytte skjermplassen bedre. I tillegg krympes toppmenyen, men kan utvides ved behov.
-                </li>
-                <li>
-                    Vi har også flere sider der tekst og bilder vises side om side ved bruk av grid i datamaskinversjonen, men i mobilversjonen vises de under hverandre i stedet for å unngå at elementene blir for små. Dette er også synlig i footeren.
-                </li>
-                <li>
-                    Vi har for øvrig prøvd å lette navigasjonen ved å la menyene følge scroll-posisjonen (være &laquo;sticky&raquo;) der det er mulig.
-                </li>
+                <li>Datamaskinversjonen av nettstedet (bredde over 1000px)</li>
+                <ul>
+                    <li>har brede marger for å lette lesbarheten</li>
+                    <li>har svevende menyer som følger rulleposisjonen (&laquo;sticky&raquo;) for å forenkle navigeringen</li>
+                    <li>viser tekst og bilder side om side ved bruk av grid</li>
+                </ul>
+                <li>Mobilversjonen av nettstedet (bredde 1000px og under)</li>
+                <ul>
+                    <li>har smale marger for å utnytte plassen bedre</li>
+                    <li>har en fastlåst toppmeny som går helt ut til kantene og er &laquo;kollapset&raquo; til ett element som kan utvides ved behov, slik at den ikke tar opp mer plass enn nødvendig når den ikke er i bruk</li>
+                    <li>viser tekst, bilder og footerkolonner under hverandre for at elementene ikke skal bli for små</li>
+                </ul>
             </ul>
 
             <h2>Farger og kontrast</h2>
             <p>
-                Tidlig i utviklingen brukte vi plassholder-farger med hvit tekst på oransje bakgrunn i header og footer. Vi endret bakgrunnen til et mørkegrønt bilde for å gi bedre kontrast mot den hvite teksten, slik at den ble mer leselig.
-            </p>
-            <p>
-
-                TODO: CCA
+                Vi har vært bevisst på fargevalg, kontraster og lesbarhet gjennom hele utviklingsprosessen. I tillegg har vi kjørt <a href="https://color.a11y.com">A11Y Color Contrast Accessibility Validator</a> på siden for å sikre at kontrastkravene i <a href="https://www.w3.org/Translations/WCAG21-no/">WCAG 2.1</a> er oppfylt. (NB: Denne gir en false positive på linkene i footeren per nå.)
             </p>
 
             <h2>Overskrifter</h2>
             <p>
-                Vi har sørget for at overskriftene på nettstedet har semantisk betydning og følger en fornuftig struktur, uten at nivåer er hoppet over, slik at lesermodus genererer en logisk innholdsfortegnelse.
+                Vi har sørget for at overskriftene på nettstedet har semantisk betydning og følger en fornuftig struktur, uten at nivåer er hoppet over, slik at f.eks. lesermodus genererer en logisk innholdsfortegnelse.
             </p>
 
             <h2>Lenker</h2>
             <p>
-                Lenker er godt synliggjort gjennom både fargevalg og understreking, og de endrer farge når man holder musen over dem. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt. Vi har valgt å utelate understreking av lenker på menyer og i footer, da vi mener at visuell og/eller semantisk kontekst gjør det tydelig nok at disse er klikkbare.
+                Lenkene på nettstedet informerer tydelig om hvor de fører hen, og de er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt, og dessuten endrer de farge når man holder musen over dem. Vi har valgt å utelate understreking av lenker på menyer, da vi mener at visuell og/eller semantisk kontekst gjør det tydelig nok at disse er klikkbare.
             </p>
 
             <h2>Bilder</h2>                                
@@ -95,12 +94,6 @@
             <h2>Kodevalidering</h2>
             <p>
                 Vi har kjørt <a href="https://validator.w3.org/">W3C-validatoren</a> på alle sidene gjentatte ganger og løst alle feilene som ble funnet, f.eks. manglende start- og slutt-tagger, meta-tagger og så videre.
-            </p>
-            
-
-            <h3>Ulike visningsformater</h3>
-            <p>
-                Vi måtte gjøre en del justeringer for å få nettstedet til å se bra ut både på datamaskin og på mobil, noe vi oppnådde ved bruk av media queries. Vi kom frem til at den svevende, avrundede menylinjen tok seg dårlig ut på smale mobilskjermer, så under en viss skjermbredde valgte vi å la menyen gå helt ut til kantene og dessuten &laquo;kollapse&raquo; til ett enkelt element man kan klikke på for å vise hele menyen.
             </p>
 
             <!-- TODO: Image of code -->

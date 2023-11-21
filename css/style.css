@@ -75,13 +75,14 @@ h2 {
     margin-bottom: 0px;
 }
 
-p {
+p, ul {
     font-size: 18px;
     line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
 }
 
 .fotograf {
-    margin-top: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     font-size: 13px;
     color: rgb(40, 33, 33);
 }
