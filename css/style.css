@@ -70,7 +70,7 @@ h2 {
     box-shadow: var(--boks-skygge);
 }
 
-.artikkel-grid-innhold h2, .grid-artikkel h2 {
+.artikkel-grid-innhold h2, .grid-hovedinnhold h2 {
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -311,6 +311,19 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 }
 
 
+/********************************************************/
+/*** Nummererte overskrifter på Tilgjengelighet-siden ***/
+/********************************************************/
+
+.tilgjengelighet-tekst {
+    counter-reset: punkt;
+}
+.tilgjengelighet-tekst h2::before {
+    counter-increment: punkt;
+    content: counter(punkt) ". ";
+}
+
+
 /**************/
 /*** Footer ***/
 /**************/
@@ -430,7 +443,7 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     .grid-sidemeny {
         display: none;
     }
-    .grid-artikkel {
+    .grid-hovedinnhold {
         grid-column-start: 1;
         grid-column-end: span 2;
         grid-row-start: 2;
@@ -493,7 +506,7 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
         grid-column-start: 1;
         grid-row-start: 2;
     }
-    .grid-artikkel {
+    .grid-hovedinnhold {
         grid-column-start: 2;
         grid-row-start: 2;
     }
