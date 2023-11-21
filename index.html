@@ -4,7 +4,7 @@
         <title>Forside &ndash; Eksamensoppgave i DATA1200, gruppe 1414</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Forsiden inneholder informasjon om hva nettsiden går ut på, i tillegg til info om OsloMet og dummy-tekst.">
+        <meta name="description" content="Forsiden har informasjon om OsloMet og en kort forklaring av hva nettsiden handler om.">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -22,35 +22,45 @@
             </nav>
         </header>
 
-        <main>
+        <main class="forside-tekst">
             <h1>Forside</h1>
 
-            <!-- Bildet er hentet fra https://www.pexels.com/photo/content-young-male-student-using-laptop-in-library-3771091/ -->
-            <img src="bilder/forside/nerd.webp" width="1920" height="1080" alt="Student med lyst, krøllete hår jobber på en bærbar datamaskin, omgitt av bøker.">
-            <address class="fotograf">Andrea Piacquadio, 2017</address>
+            <!-- Bildet og alt-tekst er hentet fra https://www.oslomet.no/om/nyheter/statsbudsjettet-2024-stabilt-for-oslomet -->
+            <img src="bilder/forside/oslomet.webp" width="2000" height="1000" alt="Del av ein fargerik OsloMet-fasade med starten på Oslo Metropolitan University i store, gule bokstavar.">
 
             <h2>OsloMet</h2>
             <p>  
-                Oslo Metropolitan Unversity, også kjent som OsloMet, er en universitet med campus på Kjeller og Pilestredet i sentrum av Oslo.
-                Et av hovedbyggene til Pilestredet campuset heter P35 hvor man finner både Universitetets egne Makerspace, i tillegg til kantine, bibliotek og mye mer.  
+                Oslo Metropolitan Unversity, også kjent som OsloMet, er et universitet med campus på Kjeller og Pilestredet i sentrum av Oslo.
+                Et av hovedbyggene til Pilestredet-campuset er P35, hvor man finner både universitetets eget makerspace, kantine, bibliotek og mye mer.  
             </p>
 
-            <details>
-                <summary> Place holder text </summary>
-                <p> Lorem Ipsum </p>
-            </details>
-
-            <h2>This Website</h2>
+            <h2>Om dette nettstedet</h2>
             <p> 
-            Denne nettsiden innholder informasjon om OsloMet campus Pilestredet. Noe mer placeholder tekst jeg vet ikke. Her er en liste med nøkkelord for estetikkens skyld.
+                Nettstedet er delt inn i fire sider, som kan nås via menyen øverst på hver av sidene eller via linkene under. Her er en kort oppsummering av hva du finner på de ulike sidene:
             </p>                
 
             <ul>
-                <li> OsloMet </li>
-                <li> P35 </li>
-                <li> Kantina ved P35 </li>
-                <li> Makerspace </li>
+                <li>
+                    <h3><a href="index.html">Forside</a></h3>
+                    Forsiden er index.html &ndash; siden du ser på nå.
+                </li>
+                <li>
+                    <h3><a href="tilgjengelighet.html">Tilgjengelighet</a></h3>
+                    Tilgjengelighet-siden svarer på &laquo;accessibility&raquo;-delen av oppgaven. 
+                </li>
+                <li>
+                    <h3><a href="emneside.html">Emneside</a></h3>
+                    Denne siden svarer på &laquo;topical&raquo;-delen av oppgaven. Den inneholder en beskrivelse av sekundære personas til et oppdiktet produkt fra faget ADST1600, gruppe 15. Siden demonstrerer bruk av grid-layout med to kolonner.
+                </li>
+                <li>
+                    <h3><a href="makerspace.html">Makerspace</a></h3>
+                    Dette er en tilleggsside med valgfritt innhold. Emnet er OsloMet Makerspace, men siden inneholder også en del dummy-tekst for illustrasjonsformål. Her har vi valgt å eksperimentere med en ekstra sidemeny som ruller sammen med siden og kan brukes til å hoppe til forskjellige deler av innholdet.
+                </li>
             </ul>
+
+            <p>
+                Alle sidene har for øvrig felles tema med samme header og footer. Footeren inneholder for det meste dummy-informasjon.
+            </p>
         </main>
   
         <footer class="footer-grid">
@@ -79,7 +89,7 @@
                 </div>
                 <div class="footer-grid-sosialemedier">
                     <div class="footer-grid-bildeplassering">
-                        <!-- Bilde hentet fra: https://www.google.com/search?q=facebook+logo&tbm=isch&ved=2ahUKEwjZ_Kiw-MWCAxXqPxAIHefHAtYQ2-cCegQIABAA&oq=facebook+logo&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEIoFEEM6CggAEIoFELEDEENQzwRYwCRg1CZoAHAAeAGAAU2IAZYMkgECMjeYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABAMABAQ&sclient=img&ei=wLBUZdmcMur_wPAP54-LsA0&bih=598&biw=1272#imgrc=DNIf2XTU3yq59M -->
+                        <!-- Bilde hentet fra https://commons.wikimedia.org/wiki/File:Facebook_Logo_%282019%29.png -->
                         <img class="bilder-footer" width="50" height="50" src="bilder/sosiale-medier/facebook.webp" alt="Facebook-logo">
                     </div>
       
@@ -88,7 +98,7 @@
                     </div>
       
                     <div class="footer-grid-bildeplassering">
-                        <!-- Bilde hentet fra: https://www.google.com/search?sca_esv=582608004&q=instagram+logo&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjKis-4-8WCAxX7ExAIHYnzBDcQ0pQJegQIDRAB&biw=1272&bih=598&dpr=1.5#imgrc=bxEYofPdDM-JoM -->
+                        <!-- Bilde hentet fra https://commons.wikimedia.org/wiki/File:Instagram_image.png -->
                         <img class="bilder-footer" width="50" height="50" src="bilder/sosiale-medier/instagram.webp" alt="Instagram-logo">
                     </div>
       
@@ -97,12 +107,12 @@
                     </div>
       
                     <div class="footer-grid-bildeplassering">
-                        <!-- Bilde hentet fra: https://www.google.com/search?q=tiktok&tbm=isch&chips=q:tiktok,online_chips:logo:yBdk2NZVm0I%3D&hl=no&sa=X&ved=2ahUKEwiggZqKh8aCAxUDHhAIHZr4A9UQ4lYoAHoECAEQMw&biw=1257&bih=583#imgrc=W-g4UnOsVfhE7M-->
+                        <!-- Bilde hentet fra https://www.stickpng.com/img/icons-logos-emojis/tech-companies/tik-tok-icon-circle -->
                         <img class="bilder-footer" width="50" height="50" src="bilder/sosiale-medier/tiktok.webp" alt="TikTok-logo">
                     </div>
       
                     <div>
-                        <a href="https://www.tiktok.com/en/" target="_blank">Tiktok</a>
+                        <a href="https://www.tiktok.com/en/" target="_blank">TikTok</a>
                     </div>
                 </div>
             </div>

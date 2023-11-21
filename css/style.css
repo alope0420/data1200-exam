@@ -71,6 +71,15 @@ main h2 {
     border-radius: 10px;
 }
 
+main h3 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.forside-tekst h2 {
+    margin-top: 20px;
+}
+
 p, ul {
     font-size: 18px;
     line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
