@@ -111,7 +111,8 @@ main a, footer a {
 
 main a:hover, footer a:hover {
     color: darkred;
-    text-shadow: 2px 2px 3px gray;
+    text-shadow: 1px 1px 1px gray;
+    text-decoration: underline;
 }
 
 main a:visited, footer a:visited {
@@ -342,7 +343,7 @@ footer {
 
 .footer-grid-sosialemedier {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 50px auto;
     grid-template-rows: 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 10px;
@@ -359,27 +360,8 @@ footer {
 .footer-lenker {
     color: var(--lys-tekstfarge);
     text-decoration: none;
-    transition: 0.5s;
     text-align: center;
     padding-top: 10px;
-}
-
-.footer-grid-bildeplassering {
-    justify-self: end;
-}
-
-.footer-lenker {
-    color: white;
-    text-decoration: none;
-    transition: 0,5s;
-    text-align: center;
-    padding-top: 10px;
-}
-
-.footer-lenker:hover {
-    cursor: pointer;
-    color: rgb(180, 1, 1);
-    text-decoration: underline;
 }
 
 
