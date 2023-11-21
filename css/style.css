@@ -119,6 +119,7 @@ h1 {
     For h1 ønsker vi i utgangspunktet en skriftstørrelse på 72px, men det blir litt voldsomt på små skjermer,
     så når skjermen blir mindre enn 1000px bred, går vi over til å skalere h1 til 7,2 % av skjermbredden.
     Vi har likevel en minimumsstørrelse på 28px for at h1 ikke skal bli mindre enn h2.
+    TODO: Fungerer ikke bra med zoom...
     */
     font-size: min(72px, max(7.2vw, 28px));
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

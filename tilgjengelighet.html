@@ -41,7 +41,7 @@
             <h2>Kontraster</h2>
             <!-- <img src="bilder/tilgjengelighet/initial-report.webp" alt="Overview from Lighthouse report showing scores of 100 for Performance and Best Practices, 75 for Accessibility, 70 for SEO and no score for PWA"> -->
             <p>
-                Den første testen, som skjedde svært tidlig i utviklingen, gjorde oss oppmerksomme på at vi måtte være bevisst på fargevalgene våre. Vi brukte plassholder-farger med hvit tekst på oransje bakgrunn i header og footer. Vi endret bakgrunnen til et mørkegrønt bilde for å gi bedre kontrast mot den hvite teksten, slik at den ble mer leselig.
+                
                 <!-- Mention performance bugs if char limit allows -->
             </p>
 
@@ -59,17 +59,55 @@
             <p>
                 Automatisert testing via Lighthouse var nyttig, men vi har også vurdert tilgjengelighetshensyn utover det tester kan fortelle oss. Vi har gått gjennom <a href="https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708">en sjekkliste hos uutilsynets</a> med viktige punkter det bør tas stilling til. (Vi har også gått gjennom <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">WCAG 2 at a Glance</a>...)
                 <ol>
-                    <li>Tastaturnavigering: </li>
-                    <li>Forstørring og responsivt design</li>
-                    <li>Farger og kontrast</li>
-                    <li>Overskrifter</li>
+                    <li>
+                        <h3>Tastaturnavigering</h3>
+                        <p>
+                            Vi har kontrollert at tab-rekkefølgen virker fornuftig, og at alle relevante elementer er fokuserbare og har tydelige fokusmarkeringer.
+                            <!-- ikke øverste menyelement eller selve meny-inputen -->
+                            En snarveilenke fra toppen av siden og ned til innholdet virker lite hensiktsmessig når vi har en såpass slank menylinje.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Forstørring og responsivt design</h3>
+                        <p>
+                            Nettstedet ser ut til å fungere godt ved både 200&nbsp;% og 400&nbsp;% forstørring. Videre har vi gjort mange bevisste grep for å oppnå et responsivt design som fungerer godt på ulike skjermstørrelser:
+                            <ul>
+                                <li>
+                                    Datamaskinversjonen av nettstedet har en svevende hovedmeny som følger rulleposisjonen for å forenkle navigeringen, men i mobilversjonen er denne fastlåst og går helt ut til kantene for å utnytte skjermplassen bedre.
+                                </li>
+                                <li>
+                                    Vi har også flere sider der tekst og bilder vises side om side ved bruk av grid i datamaskinversjonen, men i mobilversjonen vises de under hverandre i stedet for å unngå at elementene blir for små. Dette er også synlig i footeren.
+                                </li>
+                                <li>
+                                    Menyen krympes i mobilversjonen...
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Farger og kontrast</h3>
+                        <p>
+                            Den første testen, som skjedde svært tidlig i utviklingen, gjorde oss oppmerksomme på at vi måtte være bevisst på fargevalgene våre. Vi brukte plassholder-farger med hvit tekst på oransje bakgrunn i header og footer. Vi endret bakgrunnen til et mørkegrønt bilde for å gi bedre kontrast mot den hvite teksten, slik at den ble mer leselig.
+
+                            CCA
+                            Lenker er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å utelate understreking av lenker på menyene, da vi mener at visuell og/eller semantisk kontekst gjør det tydelig nok at disse er klikkbare.
+                            Lilla for besøkte lenker
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Overskrifter</h3>
+                        <p>
+                            Vi har sørget for at overskriftene på nettstedet har semantisk betydning og følger en fornuftig struktur, uten at nivåer er hoppet over, slik at lesermodus genererer en logisk innholdsfortegnelse.
+                        </p>
+                    </li>
                     <li>Lenker</li>
                     <li>Bilder</li>
                     <li>Skjema</li>
                     <li>Søkefunksjonen: Ikke aktuelt. Vi skulle gjerne laget en søkefunksjon, men så vidt vi forstår, er det ikke mulig med kun HTML og CSS.</li>
                     <li>Sidetitler</li>
                     <li>Kodevalidering</li>
-                </ul>
+                </ol>
+                Vi har for øvrig prøvd å lette navigasjonen ved å la menyene følge scroll-posisjonen (være &laquo;sticky&raquo;) der det er mulig.
             </p>
 
             <!-- TODO: Image of code -->
