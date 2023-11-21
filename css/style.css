@@ -135,6 +135,9 @@ header {
 
     /* Midtstill bl.a. menypunkter */
     text-align: center;
+
+    /* Forhindre at sidemenyen flyter over headeren når man ruller til bunn */
+    z-index: 1;
 }
 
 nav ul {
@@ -209,6 +212,7 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     position: sticky;
     top: 120px;
     align-self: start;
+    margin-bottom: 30px; /* Luft mot footeren */
 }
 
 .sidemeny {
