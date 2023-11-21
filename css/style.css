@@ -1,14 +1,13 @@
+/**************************************/
+/*** Globale egenskaper / variabler ***/
+/**************************************/
+
 :root {
     /* Jevn rulling ved klikk på jumplinker */
     scroll-behavior: smooth;
 
     /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
     scroll-padding-top: 120px;
-
-    /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
-    margin: 0px;
-
-    font-family: Arial, Helvetica, sans-serif;
 
     /*
     Bakgrunnsbilde for menyer og h2-elementer.
@@ -20,21 +19,24 @@
         /* Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske */
         url(../bilder/bakgrunn-redigert.webp);
 
-    --boks-skygge: 2px 2px 5px black;
+    --boks-skygge: 2px 2px 5px black; /* TODO: Fiks skygge på meny i smal modus */
     --boks-hover-farge: rgba(0, 200, 80, 0.5);
     --lys-tekstfarge: linen;
     --mork-tekstfarge: black;
-
-    color: var(--mork-tekstfarge);
-
 }
 
-/* TODO: Fiks skygge på meny i smal modus */
-/* TODO: overgangspunkter for bredde => variabler ? */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--mork-tekstfarge);
 
-/****************************/
-/*** Semantiske elementer ***/
-/****************************/
+    /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
+    margin: 0px;
+}
+
+
+/****************/
+/*** Toppmeny ***/
+/****************/
 
 header {
     background-image: var(--boks-bakgrunn);
@@ -48,72 +50,6 @@ header {
     /* Midtstill bl.a. menypunkter */
     text-align: center;
 }
-
-@media (max-width: 1200px) {
-    /* Smalere marginer for smalere skjermer */
-    main {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-@media (min-width: 1201px) {
-    /* Brede marginer ellers. Ikke testet på ultra-widescreen */
-    main {
-        margin-left: 20%;
-        margin-right: 20%;
-    }
-}
-
-
-/********************/
-/*** Overskrifter ***/
-/********************/
-
-h1 {
-    font-size: 60px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/*
-Fontstørrelsen på 60px for h1 blir litt mye på smale skjermer
-Vi kunne brukt vw for å oppnå en lignende og jevnere effekt,
-men dette fungerer dårlig sammen med zoom i nettleseren
-*/
-@media (max-width: 750px) {
-    h1 {
-        font-size: 48px;
-    }
-}
-@media (max-width: 600px) {
-    h1 {
-        font-size: 32px;
-    }
-}
-
-h2 {
-    font-size: 28px;
-
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 25px;
-
-    background-image: var(--boks-bakgrunn);
-    color: var(--lys-tekstfarge);
-
-    border-radius: 10px;
-    box-shadow: var(--boks-skygge);
-}
-
-
-/****************/
-/*** Toppmeny ***/
-/****************/
 
 nav ul {
     /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
@@ -138,12 +74,16 @@ nav a:hover {
     background-color: var(--boks-hover-farge);
 }
 
+/*
+Checkbox og label som brukes for å åpne og lukke menyen ved behov.
+Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale skjermer, lenger ned i filen.
+*/
 #toppmeny-bryter {
-    /* Usynlig som standard */
+    /* Selve checkboxen skal aldri være synlig */
     display: none;
 }
 
-label {
+#toppmeny-bryter-label {
     user-select: none;
     cursor: pointer;
     text-align: right;
@@ -155,71 +95,24 @@ label {
     display: block;
 }
 
-@media (max-width: 1000px) {
-    /*
-    På smal skjerm har vi en toppmeny som kan åpnes og lukkes. Dette oppnår vi med kun HTML og CSS,
-    ved å bruke en stylet checkbox-label. Konseptet og koden er inspirert av fremgangsmåten som er beskrevet
-    i denne artikkelen: https://codeburst.io/how-to-make-a-collapsible-menu-using-only-css-a1cd805b1390
-    */
-    nav {
-        max-height: 0px;
-        overflow: hidden;
-        transition-duration: 0.25s;
-        transition-property: all;
-        transition-timing-function: ease-out;
-    }
-    #toppmeny-bryter:checked + nav {
-        /*
-        Den eksakte verdien for max-height er ikke kjempenøye, så lenge den er minst like stor som menyens makshøyde.
-        Men om den er altfor stor i forhold til faktisk høyde, blir den synlige transition-effekten
-        tilsvarende for rask i forhold til transition-duration som er angitt ovenfor.
-        */
-        max-height: 500px;
-    }
-}
 
-@media (min-width: 1001px) {
-    header {
-        /* Gi navbaren runde hjørner og litt avstand fra kantene */
-        border-radius: 30px;
-        margin: 15px;
-
-        /* La navbaren henge fast øverst på skjermen når brukeren ruller ned */
-        position: sticky;
-        top: 20px;
-
-        /*
-        Lag en hvit skygge som dekker tomrommet over navbaren, slik at
-        innholdet "forsvinner" bak den når brukeren ruller ned.
-        Vi forskyver skyggen 1000 piksler opp og øker radius tilsvarende,
-        slik at vi får en tilnærmet rett kant i stedet for en buet kant.
-        */
-        box-shadow:
-            var(--boks-skygge),
-            0px -1019px 19px 1000px white;
-    }
-
-    nav li {
-        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
-        display: inline-block;
-    }
-
-    label {
-        display: none;
-    }
-}
+/***********************************************************************/
+/*** Hovedgrid for sider med hovedbilde, sidemeny og innholdskolonne ***/
+/***********************************************************************/
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr; /* Sidemenyen tar ~25% av tilgjengelig bredde */
     row-gap: 25px;
     column-gap: 25px;
 }
+
 .grid-hovedbilde {
     grid-column-start: 1;
     grid-column-end: span 2;
     grid-row-start: 1;
 }
+
 .grid-sidemeny {
     background-image: var(--boks-bakgrunn);
     box-shadow: var(--boks-skygge);
@@ -230,38 +123,23 @@ label {
     position: sticky;
     top: 120px;
     align-self: start;
-    
 }
-@media (min-width: 1001px) {
-    .grid-sidemeny {
-        grid-column-start: 1;
-        grid-row-start: 2;
-    }
-    .grid-artikkel {
-        grid-column-start: 2;
-        grid-row-start: 2;
-    }
-}
-@media (max-width: 1000px) {
-    .grid-sidemeny {
-        display: none;
-    }
-    .grid-artikkel {
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        grid-row-start: 2;
-    }
-}
+
 .sidemeny {
     list-style-position: inside;
     margin: 0;
     padding: 0;
     
+    /*
+    Vi må gjøre et par utregninger lenger nede for å få hover-effekten til å fungere som den skal.
+    Derfor definerer vi noen viktige tall som variabler for å gjøre det lettere å endre på layouten ved behov.
+    */
     --punkt-padding-topp-bunn: 10px;
     --punkt-padding-venstre-hoyre: 15px;
     --punkttekst-punkttegn-avstand: 20px;
     --punkttegn-bredde: 20px;
 }
+
 .sidemeny li {
     padding-left: var(--punkt-padding-venstre-hoyre);
     padding-right: var(--punkt-padding-venstre-hoyre);
@@ -269,8 +147,12 @@ label {
     /* Tving punkttegnet og punktteksten til å holde seg på én linje */
     white-space: nowrap; 
 }
+
 .sidemeny li a {
-    /* Vi vil at bakgrunnsfargen ved hover skal gå ut til kantene av listepunktet, ellers ser effekten merkelig ut, så vi trenger blokkstiler. */
+    /*
+    Vi vil at bakgrunnsfargen ved hover skal gå ut til kantene av listepunktet,
+    ellers ser effekten merkelig ut, så vi trenger blokkstiler.
+    */
     display: inline-block;
 
     /*
@@ -291,7 +173,8 @@ label {
     Vi må kompensere tilsvarende i width-egenskapen for at hover-effekten skal bli nøyaktig slik vi ønsker.
     Hjørneavrundingen blir ikke riktig uten dette.
     */
-    width: calc(100%
+    width: calc(
+        100%
         - var(--punkttekst-beregnet-padding-venstre)
         + var(--punkt-padding-venstre-hoyre) * 2
     );
@@ -317,6 +200,7 @@ label {
 .sidemeny li a:hover {
     background-color: var(--boks-hover-farge);
 }
+
 .sidemeny li:not(:first-child) {
     /*
     Alle punktene, *unntatt øverste*, får en linje over seg
@@ -326,10 +210,12 @@ label {
     border-top-style: dotted;
     border-top-color: var(--lys-tekstfarge);
 }
+
 .sidemeny li:first-child {
     /* Uthev den første jumplinken, som korresponderer med h1 på siden */
     font-weight: bold;
 }
+
 .sidemeny li::marker {
     content: "\2192"; /* pil-ikon */
 
@@ -338,18 +224,49 @@ label {
     font-weight: initial;
     color: var(--lys-tekstfarge);
 }
-.bilde-makerspace {
-    float: right;
-    width: 35%;
+
+/*****************************************/
+/*** Overskrifter, avsnitt, bilder o.l ***/
+/*****************************************/
+
+h1 {
+    font-size: 60px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.bilde-laserkutter {
-    float: right;
-    width: 30%;
+
+h2 {
+    font-size: 28px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 25px;
+
+    background-image: var(--boks-bakgrunn);
+    color: var(--lys-tekstfarge);
+
+    border-radius: 10px;
+    box-shadow: var(--boks-skygge);
+}
+
+.artikkel-grid-innhold h2, .grid-artikkel h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 p {
     font-size: 18px;
     line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
+}
+
+.fotograf {
+    margin-top: 0px;
+    font-size: 13px;
+    color: gray;
 }
 
 main img {
@@ -359,85 +276,38 @@ main img {
     height: auto;
 }
 
-footer {
-    width: 100%;
-    background-color: rgb(1, 30, 1);
+.bilde-makerspace {
+    float: right;
+    width: 35%;
+}
+.bilde-laserkutter {
+    float: right;
+    width: 30%;
 }
 
-.link {
-    color: black;
+main a, footer a {
+    color: darkblue;
     font-size: 18px;
     line-height: 30px;
     transition: 0.1s;
 }
 
-.link:hover {
-    color: rgb(180, 1, 1);
-    text-shadow: 2px 2px 3px rgb(140, 135, 135);
+main a:hover, footer a:hover {
+    color: darkred;
+    text-shadow: 2px 2px 3px gray;
 }
 
-.fotograf {
-    margin-top: 0px;
-    font-size: 13px;
-    color: rgb(140, 135, 135);
+main a:visited, footer a:visited {
+    color: indigo;
 }
 
-/* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
-/* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
-@media (min-width: 1001px) {
-    .artikkel-grid-innhold {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 30px;
-        row-gap: 30px;
-    }
+/**************/
+/*** Footer ***/
+/**************/
 
-    /* Disse selectorene gjør at bildene havner på venstre/høyre side av teksten annenhver gang */
-    /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
-
-    /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
-    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(1) {
-        grid-column-start: 1;
-    }
-    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(2) {
-        grid-column-start: 2;
-    }
-
-    /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
-    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(2) {
-        grid-column-start: 1;
-    }
-    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(1) {
-        grid-column-start: 2;
-    }
-
-    /* Tving begge div-ene til å være på første rad */
-    /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
-    .artikkel-grid-innhold div {
-        grid-row-start: 1;
-    }
-    .grid-footer {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 50px;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-@media (max-width: 1000px) {
-    .grid-footer {
-        display: grid;
-        justify-self: center;
-        row-gap: 50px;
-    }
-}
-
-.artikkel-grid-innhold h2, .grid-artikkel h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
+footer {
+    width: 100%;
+    background-color: rgb(1, 30, 1);
 }
 
 .footer-tekst {
@@ -493,4 +363,172 @@ footer {
     cursor: pointer;
     color: rgb(180, 1, 1);
     text-decoration: underline;
+}
+
+
+/****************************************/
+/*** Responsiv design (media queries) ***/
+/****************************************/
+
+/*
+Fontstørrelsen for h1 blir litt stor på smale skjermer, så der skalerer vi ned.
+Vi kunne brukt vw for å oppnå en lignende og jevnere effekt,
+men dette fungerer dårlig sammen med zoom i nettleseren.
+*/
+@media (max-width: 750px) {
+    h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+    }
+}
+
+/*** Layout for smal skjerm ***/
+
+@media (max-width: 1000px) {
+    /*
+    På smal skjerm har vi en toppmeny som kan åpnes og lukkes. Dette oppnår vi med kun HTML og CSS,
+    ved å bruke en stylet checkbox-label. Konseptet og koden er inspirert av fremgangsmåten som er beskrevet
+    i denne artikkelen: https://codeburst.io/how-to-make-a-collapsible-menu-using-only-css-a1cd805b1390
+    */
+    nav {
+        max-height: 0px;
+        overflow: hidden;
+        transition-duration: 0.25s;
+        transition-property: all;
+        transition-timing-function: ease-out;
+    }
+    #toppmeny-bryter:checked + nav {
+        /*
+        Den eksakte verdien for max-height er ikke kjempenøye, så lenge den er minst like stor som menyens makshøyde.
+        Men om den er altfor stor i forhold til faktisk høyde, blir den synlige transition-effekten
+        tilsvarende for rask i forhold til transition-duration som er angitt ovenfor.
+        */
+        max-height: 500px;
+    }
+    
+    main {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    /* Vi har ikke plass til noen sidemeny på smale skjermer */
+    .grid-sidemeny {
+        display: none;
+    }
+    .grid-artikkel {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+    }
+
+    /*
+    Ingen spesiell grid-konfigurasjon i footeren => grid-cellene vises under hverandre
+    i stedet for ved siden av hverandre. Det tar seg bedre ut på smal skjerm.
+    */
+    .grid-footer {
+        display: grid;
+        justify-self: center;
+        row-gap: 50px;
+    }
+}
+
+
+/*** Layout for bred skjerm ***/
+
+@media (min-width: 1001px) {
+    header {
+        /* Gi navbaren runde hjørner og litt avstand fra kantene */
+        border-radius: 30px;
+        margin: 15px;
+
+        /* La navbaren henge fast øverst på skjermen når brukeren ruller ned */
+        position: sticky;
+        top: 20px;
+
+        /*
+        Lag en hvit skygge som dekker tomrommet over navbaren, slik at
+        innholdet "forsvinner" bak den når brukeren ruller ned.
+        Vi forskyver skyggen 1000 piksler opp og øker radius tilsvarende,
+        slik at vi får en tilnærmet rett kant i stedet for en buet kant.
+        */
+        box-shadow:
+            var(--boks-skygge),
+            0px -1019px 19px 1000px white;
+    }
+    
+    /* Bredere marginer når vi har plass til det. Ikke testet på ultra-widescreen. */
+    main {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    nav li {
+        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
+        display: inline-block;
+    }
+
+    #toppmeny-bryter-label {
+        /* Alle menyelementene er synlige på bred skjerm, så vi skjuler meny-bryteren */
+        display: none;
+    }
+
+    /* Grid med sidemeny til venstre og artikkel/tekst til høyre */
+    .grid-sidemeny {
+        grid-column-start: 1;
+        grid-row-start: 2;
+    }
+    .grid-artikkel {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+
+    /* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
+    /* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
+    .artikkel-grid-innhold {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    /* Disse selectorene gjør at bildene havner på venstre/høyre side av teksten annenhver gang */
+    /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
+
+    /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
+    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(1) {
+        grid-column-start: 1;
+    }
+    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(2) {
+        grid-column-start: 2;
+    }
+
+    /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
+    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(2) {
+        grid-column-start: 1;
+    }
+    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+        grid-column-start: 2;
+    }
+
+    /* Tving begge div-ene til å være på første rad */
+    /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
+    .artikkel-grid-innhold div {
+        grid-row-start: 1;
+    }
+
+    /* Vis cellene i footer-griden ved siden av hverandre når vi har plass til det */
+    .grid-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
