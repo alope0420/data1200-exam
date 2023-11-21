@@ -19,7 +19,15 @@
         /* Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske */
         url(../bilder/bakgrunn-redigert.webp);
 
-    --boks-skygge: 2px 2px 5px black; /* TODO: Fiks skygge på meny i smal modus */
+    --boks-skygge: 2px 2px 5px black;
+
+    /*
+    Bedre skygge enn --boks-skygge for elementer som går fra kant til kant.
+    Går noen piksler utenfor både til venstre og til høyre.
+    Negativ y kompenserer for overdreven spread i y-retning.
+    */
+    --linje-skygge: -5px -8px 5px 10px black;
+
     --boks-hover-farge: rgba(0, 200, 80, 0.5);
     --lys-tekstfarge: linen;
     --mork-tekstfarge: black;
@@ -301,6 +309,7 @@ main a:visited, footer a:visited {
     color: indigo;
 }
 
+
 /**************/
 /*** Footer ***/
 /**************/
@@ -390,6 +399,9 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
 /*** Layout for smal skjerm ***/
 
 @media (max-width: 1000px) {
+    header {
+        box-shadow: var(--linje-skygge);
+    }
     /*
     På smal skjerm har vi en toppmeny som kan åpnes og lukkes. Dette oppnår vi med kun HTML og CSS,
     ved å bruke en stylet checkbox-label. Konseptet og koden er inspirert av fremgangsmåten som er beskrevet
