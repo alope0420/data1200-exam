@@ -46,7 +46,7 @@ body {
 /*** Overskrifter, avsnitt, bilder o.l ***/
 /*****************************************/
 
-h1 {
+main h1 {
     font-size: 60px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
@@ -54,7 +54,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-h2 {
+main h2 {
     font-size: 28px;
 
     padding-left: 15px;
@@ -68,9 +68,9 @@ h2 {
 
     border-radius: 10px;
     box-shadow: var(--boks-skygge);
-}
+/*}
 
-.artikkel-grid-innhold h2, .grid-hovedinnhold h2 {
+.artikkel-grid-innhold h2, .grid-hovedinnhold h2 {*/
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -94,6 +94,7 @@ main img {
     height: auto;
 }
 
+/*
 .bilde-makerspace {
     float: right;
     width: 35%;
@@ -102,6 +103,7 @@ main img {
     float: right;
     width: 30%;
 }
+*/
 
 main a, footer a {
     font-size: 18px;
@@ -204,7 +206,7 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr; /* Sidemenyen tar ~25% av tilgjengelig bredde */
-    row-gap: 25px;
+    /*row-gap: 25px;*/
     column-gap: 25px;
 }
 
@@ -224,7 +226,8 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     position: sticky;
     top: 120px;
     align-self: start;
-    margin-bottom: 30px; /* Luft mot footeren */
+    margin-top: 18px;
+    margin-bottom: 18px; /* Luft mot footeren */
 }
 
 .sidemeny {
