@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="no">
     <head>
-        <title>Tilgjengelighet &ndash; Eksamensoppgave i DATA1200, gruppe 85</title>
+        <title>INSERT TITLE HERE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <header>
-            <!-- Menygrafikken er hentet fra https://commons.wikimedia.org/wiki/File:Hamburger_icon_white.svg -->
-            <label id="toppmeny-bryter-label" for="toppmeny-bryter"><img src="bilder/hamburger_icon_white.svg" alt="Meny" width="32" height="32"></label>
+            <label id="toppmeny-bryter-label" for="toppmeny-bryter">Meny</label>
             <input type="checkbox" id="toppmeny-bryter">
             <nav>
                 <ul>
@@ -21,93 +20,100 @@
             </nav>
         </header>
 
-        <main class="tilgjengelighet-tekst">
+        <main>
 
             <!--
                 Short presentation of accessibility for your site. Test your site with an automated test. Write a very short text (about 400-500 words) about how you tested the code for accessibility using this automated test. Tell us how you checked, and coding choices you made for universal design beyond what an automated test could tell you. You are recommended to use screenshots from the testing site and of your code – lack of images may affect your score.
             -->
-            <h1>Tilgjengelighet</h1>
+            <h1>Accessibility</h1>
+
+            <h2>Overview</h2>
             <p>
-                Vi brukte i hovedsak <a class="link" href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> gjennom mesteparten av utviklingsprosessen for å sikre nettstedets tilgjengelighet. Vi begynte tidlig og testet kontinuerlig gjennom hele prosjektet for å holde oss bevisst på god tilgjengelighetspraksis, slik at dette ble implementert fortløpende. Siden Lighthouse ikke er altvitende, har vi også vurdert tilgjengelighetshensyn utover det tester kan fortelle oss. Vi har gått gjennom <a href="https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708">en sjekkliste hos uutilsynets</a> med viktige punkter det bør tas stilling til. (Vi har også gått gjennom <a href="https://www.w3.org/WAI/standards-guidelines/wcag/glance/">WCAG 2 at a Glance</a>...)
+                We used <a class="link" href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> for accessibility testing. Since we were multiple students working in parallel, accessibility testing started before most pages were finished, and was repeated multiple times to ensure the final product retained an acceptable accessibility score. This approach also helped to inform our development practices as we were working on the project.
             </p>
 
-            <h2>Tastaturnavigering</h2>
+            <h2>Initial test</h2>
+            <img src="bilder/tilgjengelighet/initial-report.png" alt="Overview from Lighthouse report showing scores of 100 for Performance and Best Practices, 75 for Accessibility, 70 for SEO and no score for PWA">
             <p>
-                Vi har kontrollert at tab-rekkefølgen virker fornuftig, og at alle relevante elementer er fokuserbare og har tydelige fokusmarkeringer.
-                <!-- ikke øverste menyelement eller selve meny-inputen -->
-                En snarveilenke fra toppen av siden og ned til innholdet virker lite hensiktsmessig når vi har en såpass slank menylinje.
+                Davide De Giovanni (Photographer). (2018). Four Women Sitting Inside Fendi Cinema [Photograph], <a class="link" href="https://www.pexels.com/photo/four-women-sitting-inside-fendi-cinema-1649683/">pexels.com</a>
             </p>
-
-            <h2>Forstørring og responsivt design</h2>
             <p>
-                Nettstedet ser ut til å fungere godt ved både 200&nbsp;% og 400&nbsp;% forstørring. Videre har vi gjort mange bevisste grep for å oppnå et responsivt design som fungerer godt på ulike skjermstørrelser:
-                <ul>
-                    <li>
-                        Datamaskinversjonen av nettstedet har en svevende hovedmeny som følger rulleposisjonen for å forenkle navigeringen, men i mobilversjonen er denne fastlåst og går helt ut til kantene for å utnytte skjermplassen bedre.
-                    </li>
-                    <li>
-                        Vi har også flere sider der tekst og bilder vises side om side ved bruk av grid i datamaskinversjonen, men i mobilversjonen vises de under hverandre i stedet for å unngå at elementene blir for små. Dette er også synlig i footeren.
-                    </li>
-                    <li>
-                        Menyen krympes i mobilversjonen...
-                    </li>
-                </ul>
-            </p>
-
-            <h2>Farger og kontrast</h2>
-            <p>
-                Den første testen, som skjedde svært tidlig i utviklingen, gjorde oss oppmerksomme på at vi måtte være bevisst på fargevalgene våre. Vi brukte plassholder-farger med hvit tekst på oransje bakgrunn i header og footer. Vi endret bakgrunnen til et mørkegrønt bilde for å gi bedre kontrast mot den hvite teksten, slik at den ble mer leselig.
-
-                CCA
-                Lenker er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å utelate understreking av lenker på menyene, da vi mener at visuell og/eller semantisk kontekst gjør det tydelig nok at disse er klikkbare.
-                Lilla for besøkte lenker
-            </p>
-
-            <h2>Overskrifter</h2>
-            <p>
-                Vi har sørget for at overskriftene på nettstedet har semantisk betydning og følger en fornuftig struktur, uten at nivåer er hoppet over, slik at lesermodus genererer en logisk innholdsfortegnelse.
-            </p>
-
-            <h2>Lenker</h2>
-            <p>
-                ...
-            </p>
-
-            <h2>Bilder</h2>                                
-            <p>
-                Vi ble også tidlig minnet om viktigheten av attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer. Før innlevering tok vi en runde gjennom alle sidene og la til disse der de manglet. <code>alt</code>-attributtene sørger for at bildene er forståelige for brukere av assisterende teknologi (f.eks. skjermlesere), mens <code>width</code> og <code>height</code> gjør at nettleseren slipper å rekalkulere layouten etter hvert som bildene lastes inn, ettersom den allerede vet hvor store de kommer til å være.
-            </p>
-
-            <h2>Skjema</h2>
-            <p>
-                ...
-            </p>
-
-            <h2>Søkefunksjonen</h2>
-            <p>
-                Ikke aktuelt. Vi skulle gjerne laget en søkefunksjon, men så vidt vi forstår, er det ikke mulig med kun HTML og CSS.
-            </p>
-        
-            <h2>Sidetitler</h2>
-            <p>
-                ...
-            </p>
-
-            <h2>Kodevalidering</h2>
-            <p>
-                ...
+                The initial accessibility test, run quite early in development with only one page being close to finished, revealed just a couple of problems.
+                <!-- Mention performance bugs if char limit allows -->
+                We were missing <code>alt</code> and <code>width</code>/<code>height</code> attributes for most of our images, which was a simple fix. Lighthouse also advised us about low color legibility in certain areas of the website, though at this point, the design was not finalized yet, so we merely took this as a reminder to consider contrasts when selecting colors further down the line.
+                <!-- Mention SEO if char limit allows -->
+                <!-- TODO: Image of code -->
             </p>
             
-            Vi har for øvrig prøvd å lette navigasjonen ved å la menyene følge scroll-posisjonen (være &laquo;sticky&raquo;) der det er mulig.
-            
 
-            <h3>Ulike visningsformater</h3>
+            <h2>Final touches</h2>
             <p>
-                Vi måtte gjøre en del justeringer for å få nettstedet til å se bra ut både på datamaskin og på mobil, noe vi oppnådde ved bruk av media queries. Vi kom frem til at den svevende, avrundede menylinjen tok seg dårlig ut på smale mobilskjermer, så under en viss skjermbredde valgte vi å la menyen gå helt ut til kantene og dessuten &laquo;kollapse&raquo; til ett enkelt element man kan klikke på for å vise hele menyen.
+                Realizing that an automated accessibility test would only get us so far, we decided to ... before submitting the project.
             </p>
-
-            <!-- TODO: Image of code -->
             
         </main>
+        <footer class="grid-footer">
+            <div class="footer-tekst">
+              <h3>
+                Kontakt oss &#9742;&#65039;
+              </h3>
+              <p>
+                Lars Larsen 	&#9830; Lars@gmail.com 	&#9830; +47 12345678
+              </p>
+              <p>
+                Hans Hansen 	&#9830; Hans@gmail.com 	&#9830; +47 87654321
+              </p>
+              <p>
+                Petra Petterson &#9830; Petra@gmail.com &#9830; +47 24681012
+              </p>
+            </div>
+        
+            <div class="footer-tekst">
+              <h3>
+                Adresse &#128506;&#65039;
+              </h3>
+        
+              <a class="footer-lenker" href="https://www.google.com/maps/place/OsloMet+-+Biblioteket+P35/@59.919548,10.7327984,17z/data=!3m1!4b1!4m6!3m5!1s0x46416e7bfda9fef5:0x1999a7ebc1b332a3!8m2!3d59.919548!4d10.7353733!16s%2Fg%2F1tdbc_y1?entry=ttu" target="_blank">ELLEN GLEDITSCHS HUS, Pilestredet 35, 0166 Oslo</a>
+              </ul>
+            </div>
+        
+            <div class="footer-tekst">
+              <div>
+                <h3>
+                  Sosiale medier &#128123;
+                </h3>
+              </div>
+              <div class="footer-grid-sosialemedier">
+                <div class="footer-grid-bildeplassering">
+                  <img class="bilder-footer" src="bilder/Facebook_Logo_2023.png">
+        
+                  <!-- Bilde hentet fra: https://www.google.com/search?q=facebook+logo&tbm=isch&ved=2ahUKEwjZ_Kiw-MWCAxXqPxAIHefHAtYQ2-cCegQIABAA&oq=facebook+logo&gs_lcp=CgNpbWcQAzIICAAQgAQQsQMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEIoFEEM6CggAEIoFELEDEENQzwRYwCRg1CZoAHAAeAGAAU2IAZYMkgECMjeYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABAMABAQ&sclient=img&ei=wLBUZdmcMur_wPAP54-LsA0&bih=598&biw=1272#imgrc=DNIf2XTU3yq59M -->
+                </div>
+        
+                <div>
+                  <a class="footer-lenker" href="https://www.facebook.com/privacy/consent/?flow=ad_free_subscription&params%5Bafs_variant%5D=first_time&source=ad_free_subscription_blocking_flow" target="_blank">Facebook</a>
+                </div>
+        
+                <div class="footer-grid-bildeplassering">
+                  <img class="bilder-footer" src="bilder/logo_instagram.png">
+        
+                  <!-- Bilde hentet fra: https://www.google.com/search?sca_esv=582608004&q=instagram+logo&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjKis-4-8WCAxX7ExAIHYnzBDcQ0pQJegQIDRAB&biw=1272&bih=598&dpr=1.5#imgrc=bxEYofPdDM-JoM -->
+                </div>
+        
+                <div>
+                  <a class="footer-lenker" href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </div>
+        
+                <div class="footer-grid-bildeplassering">
+                  <img class="bilder-footer" src="bilder/tiktok-logo.png">
+        
+                  <!-- Bilde hentet fra: https://www.google.com/search?q=tiktok&tbm=isch&chips=q:tiktok,online_chips:logo:yBdk2NZVm0I%3D&hl=no&sa=X&ved=2ahUKEwiggZqKh8aCAxUDHhAIHZr4A9UQ4lYoAHoECAEQMw&biw=1257&bih=583#imgrc=W-g4UnOsVfhE7M-->
+                </div>
+                <div>
+                  <a class="footer-lenker" href="https://www.tiktok.com/en/" target="_blank">Tiktok</a>
+                </div>
+              </div>
+            </div>
+          </footer>
     </body>
 </html>
