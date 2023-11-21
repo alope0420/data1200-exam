@@ -103,10 +103,17 @@ main img {
 }
 
 main a, footer a {
-    color: darkblue;
     font-size: 18px;
     line-height: 30px;
     transition: 0.1s;
+}
+
+main a {
+    color: darkblue;
+}
+
+footer a {
+    color: var(--lys-tekstfarge);
 }
 
 main a:hover, footer a:hover {
@@ -335,10 +342,21 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 
 footer {
     width: 100%;
-    background-color: rgb(1, 30, 1);
+    background-color: rgb(0, 40, 0);
 }
 
-.footer-tekst {
+/* Vis cellene i footer-griden ved siden av hverandre når vi har plass til det */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.footer-grid-tekst {
     line-height: 30px;
     color: var(--lys-tekstfarge);
     font-size: 18px;
@@ -353,20 +371,13 @@ footer {
     row-gap: 10px;
 }
 
-.bilder-footer {
+.footer-grid-sosialemedier img {
     width: 50px;
 }
 
-.footer-grid-bildeplassering {
+/*.footer-grid-bildeplassering {
     justify-self: end;
-}
-
-.footer-lenker {
-    color: var(--lys-tekstfarge);
-    text-decoration: none;
-    text-align: center;
-    padding-top: 10px;
-}
+}*/
 
 
 /****************************************/
@@ -439,8 +450,9 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     Ingen spesiell grid-konfigurasjon i footeren => grid-cellene vises under hverandre
     i stedet for ved siden av hverandre. Det tar seg bedre ut på smal skjerm.
     */
-    .grid-footer {
+    .footer-grid {
         display: grid;
+        grid-template-columns: unset;
         justify-self: center;
         row-gap: 50px;
     }
@@ -529,16 +541,5 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
     .artikkel-grid-innhold div {
         grid-row-start: 1;
-    }
-
-    /* Vis cellene i footer-griden ved siden av hverandre når vi har plass til det */
-    .grid-footer {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 50px;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
     }
 }
