@@ -1,35 +1,52 @@
-html {
+:root {
     /* Jevn rulling ved klikk på jumplinker */
     scroll-behavior: smooth;
 
-    /* Gradienten gjør bildet mørkere og mer dempet enn originalen */
-    /* Vi bruker en variabel for å slippe å kopiere hele koden til flere steder */
-    --bar-background: linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
-    url(../bilder/bakgrunn-redigert.webp); /*https://i.pinimg.com/originals/25/e2/8e/25e28e4db699d47cfd18a6ad600c49ef.webp*/
+    /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
+    scroll-padding-top: 120px;
 
-    /* TODO: Skikkelig kildehenvisning for bildet over. */
-    /* Tengel vil ha en link til siden der man finner bildet, men han er ikke så opptatt av fotograf, årstall osv. */
+    /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
+    margin: 0px;
 
-    --bar-hover-farge: rgba(0, 200, 80, 0.5);
-    --bar-tekst-farge: linen;
-}
+    font-family: Arial, Helvetica, sans-serif;
 
-@media (min-width: 1001px) {
-    html {
-        /* Forskyvning ved klikk på jumplinker, slik at overskriften ikke havner under menyen */
-        scroll-padding-top: 120px;
-    }
+    /*
+    Bakgrunnsbilde for menyer og h2-elementer.
+    Gradienten gjør bildet mørkere og mer dempet enn originalen.
+    Vi bruker en variabel for å slippe å kopiere hele koden til flere steder.
+    */
+    --boks-bakgrunn:
+        linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
+        /* Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske */
+        url(../bilder/bakgrunn-redigert.webp);
+
+    --boks-skygge: 2px 2px 5px black;
+    --boks-hover-farge: rgba(0, 200, 80, 0.5);
+    --lys-tekstfarge: linen;
+    --mork-tekstfarge: black;
+
+    color: var(--mork-tekstfarge);
+
 }
 
 /* TODO: Fiks skygge på meny i smal modus */
 /* TODO: overgangspunkter for bredde => variabler ? */
 
-body {    
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+/****************************/
+/*** Semantiske elementer ***/
+/****************************/
 
-    /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
-    margin: 0px;
+header {
+    background-image: var(--boks-bakgrunn);
+
+    /*
+    Midtstill bakgrunnsbildet horisontalt. Bildet er symmetrisk, så dette ser bedre ut.
+    Unngå derimot vertikal midtstilling, noe som ser rart ut når menyen åpnes og lukkes.
+    */
+    background-position: center top;
+
+    /* Midtstill bl.a. menypunkter */
+    text-align: center;
 }
 
 @media (max-width: 1200px) {
@@ -48,48 +65,55 @@ body {
     }
 }
 
-header {
-    background-image: var(--bar-background);
 
-    /* Midtstill bildet horisontalt. Bildet er symmetrisk, så dette ser bedre ut. */
-    /* Unngå derimot vertikal midtstilling, noe som ser rart ut når menyen åpnes og lukkes. */
-    background-position: center top;
+/********************/
+/*** Overskrifter ***/
+/********************/
 
-    /* Midtstill bl.a. menypunkter */
-    text-align: center;
+h1 {
+    font-size: 60px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*
-#hovedinnhold-snarvei {
-    display: inline-block;
-    color: var(--bar-tekst-farge);
-    padding: 10px;
-
-    position: absolute;
-    top: -1000px;
-}
-#hovedinnhold-snarvei:focus {
-    position: relative;
-    top: auto;
-    font-size: 40px;
-}
+Fontstørrelsen på 60px for h1 blir litt mye på smale skjermer
+Vi kunne brukt vw for å oppnå en lignende og jevnere effekt,
+men dette fungerer dårlig sammen med zoom i nettleseren
 */
-
-#toppmeny-bryter {
-    display: none;
+@media (max-width: 750px) {
+    h1 {
+        font-size: 48px;
+    }
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+    }
 }
 
-label {
-    user-select: none;
-    cursor: pointer;
-    text-align: right;
-    padding: 20px;
-    height: 32px;
-    color: var(--bar-tekst-farge);
+h2 {
+    font-size: 28px;
 
-    /* La elementet gå fra kant til kant => gjør hele menylinjen klikkbar */
-    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 25px;
+
+    background-image: var(--boks-bakgrunn);
+    color: var(--lys-tekstfarge);
+
+    border-radius: 10px;
+    box-shadow: var(--boks-skygge);
 }
+
+
+/****************/
+/*** Toppmeny ***/
+/****************/
 
 nav ul {
     /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
@@ -101,7 +125,7 @@ nav ul {
 }
 
 nav a {
-    color: var(--bar-tekst-farge);
+    color: var(--lys-tekstfarge);
     text-decoration-line: none;
     font-size: 22px;
     font-weight: bold;
@@ -111,57 +135,32 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--bar-hover-farge);
+    background-color: var(--boks-hover-farge);
 }
 
-h1 {
-    /*
-    For h1 ønsker vi i utgangspunktet en skriftstørrelse på 72px, men det blir litt voldsomt på små skjermer,
-    så når skjermen blir mindre enn 1000px bred, går vi over til å skalere h1 til 7,2 % av skjermbredden.
-    Vi har likevel en minimumsstørrelse på 28px for at h1 ikke skal bli mindre enn h2.
-    TODO: Fungerer ikke bra med zoom...
-    */
-    font-size: min(72px, max(7.2vw, 28px));
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 10px;
+#toppmeny-bryter {
+    /* Usynlig som standard */
+    display: none;
 }
 
-h2 {
-    font-size: 28px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-image: var(--bar-background);
-    color: var(--bar-tekst-farge);
-    border-radius: 10px;
-    margin-top: 25px;
-}
+label {
+    user-select: none;
+    cursor: pointer;
+    text-align: right;
+    padding: 20px;
+    height: 32px;
+    color: var(--lys-tekstfarge);
 
-@media (min-width: 1001px) {
-    header {
-        /* Gi navbaren runde hjørner og litt avstand fra kanten av vinduet */
-        border-radius: 30px;
-        margin: 15px;
-        position: sticky;
-        top: 20px;
-    }
-
-    nav li {
-        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
-        display: inline-block;
-    }
-
-    label {
-        display: none;
-    }
-
+    /* La elementet gå fra kant til kant => gjør hele menylinjen klikkbar */
+    display: block;
 }
 
 @media (max-width: 1000px) {
-    /* TODO: kildehenvisning */
+    /*
+    På smal skjerm har vi en toppmeny som kan åpnes og lukkes. Dette oppnår vi med kun HTML og CSS,
+    ved å bruke en stylet checkbox-label. Konseptet og koden er inspirert av fremgangsmåten som er beskrevet
+    i denne artikkelen: https://codeburst.io/how-to-make-a-collapsible-menu-using-only-css-a1cd805b1390
+    */
     nav {
         max-height: 0px;
         overflow: hidden;
@@ -172,21 +171,44 @@ h2 {
     #toppmeny-bryter:checked + nav {
         /*
         Den eksakte verdien for max-height er ikke kjempenøye, så lenge den er minst like stor som menyens makshøyde.
-        Men om den er altfor stor, går transition-effekten i praksis mye raskere enn angitt ovenfor.
+        Men om den er altfor stor i forhold til faktisk høyde, blir den synlige transition-effekten
+        tilsvarende for rask i forhold til transition-duration som er angitt ovenfor.
         */
         max-height: 500px;
     }
 }
 
-h2, .grid-sidemeny {
-    box-shadow: 2px 2px 5px black;
+@media (min-width: 1001px) {
+    header {
+        /* Gi navbaren runde hjørner og litt avstand fra kantene */
+        border-radius: 30px;
+        margin: 15px;
+
+        /* La navbaren henge fast øverst på skjermen når brukeren ruller ned */
+        position: sticky;
+        top: 20px;
+
+        /*
+        Lag en hvit skygge som dekker tomrommet over navbaren, slik at
+        innholdet "forsvinner" bak den når brukeren ruller ned.
+        Vi forskyver skyggen 1000 piksler opp og øker radius tilsvarende,
+        slik at vi får en tilnærmet rett kant i stedet for en buet kant.
+        */
+        box-shadow:
+            var(--boks-skygge),
+            0px -1019px 19px 1000px white;
+    }
+
+    nav li {
+        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
+        display: inline-block;
+    }
+
+    label {
+        display: none;
+    }
 }
 
-header {
-    box-shadow:
-        2px 2px 5px black,
-        0px -1019px 19px 1000px white;
-}
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -199,7 +221,8 @@ header {
     grid-row-start: 1;
 }
 .grid-sidemeny {
-    background-image: var(--bar-background);
+    background-image: var(--boks-bakgrunn);
+    box-shadow: var(--boks-skygge);
     border-radius: 10px;
 
     /* Lås sidemenyens posisjon når brukeren ruller langt nok ned */
@@ -235,13 +258,13 @@ header {
     padding: 0;
     
     --punkt-padding-topp-bunn: 10px;
-    --punkt-padding-venstre-høyre: 15px;
+    --punkt-padding-venstre-hoyre: 15px;
     --punkttekst-punkttegn-avstand: 20px;
     --punkttegn-bredde: 20px;
 }
 .sidemeny li {
-    padding-left: var(--punkt-padding-venstre-høyre);
-    padding-right: var(--punkt-padding-venstre-høyre);
+    padding-left: var(--punkt-padding-venstre-hoyre);
+    padding-right: var(--punkt-padding-venstre-hoyre);
     
     /* Tving punkttegnet og punktteksten til å holde seg på én linje */
     white-space: nowrap; 
@@ -254,7 +277,7 @@ header {
     Vi vil også at bakgrunnsfargen skal dekke selve punkttegnet, så vi bruker negativ margin
     tilsvarende listepunktets padding + punkttegnets bredde for å komme helt til kanten av listen.
     */
-    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-høyre) + var(--punkttegn-bredde));
+    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-hoyre) + var(--punkttegn-bredde));
     margin-left: calc(0px - var(--punkttekst-beregnet-margin-venstre));
 
     /*
@@ -270,12 +293,12 @@ header {
     */
     width: calc(100%
         - var(--punkttekst-beregnet-padding-venstre)
-        + var(--punkt-padding-venstre-høyre) * 2
+        + var(--punkt-padding-venstre-hoyre) * 2
     );
 
     padding-top: var(--punkt-padding-topp-bunn);
     padding-bottom: var(--punkt-padding-topp-bunn);
-    color: var(--bar-tekst-farge);
+    color: var(--lys-tekstfarge);
     text-decoration: none;
     text-shadow: 3px 3px 3px black;
     transition: 0.15s;
@@ -292,7 +315,7 @@ header {
 }
 
 .sidemeny li a:hover {
-    background-color: rgba(0, 200, 80, 0.5);
+    background-color: var(--boks-hover-farge);
 }
 .sidemeny li:not(:first-child) {
     /*
@@ -301,7 +324,7 @@ header {
     */
     border-top-width: 2px;
     border-top-style: dotted;
-    border-top-color: var(--bar-tekst-farge);
+    border-top-color: var(--lys-tekstfarge);
 }
 .sidemeny li:first-child {
     /* Uthev den første jumplinken, som korresponderer med h1 på siden */
@@ -313,7 +336,7 @@ header {
     /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
     font-size: var(--punkttegn-bredde);
     font-weight: initial;
-    color: var(--bar-tekst-farge);
+    color: var(--lys-tekstfarge);
 }
 .bilde-makerspace {
     float: right;
@@ -362,7 +385,7 @@ footer {
 /* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
 /* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
 @media (min-width: 1001px) {
-    .topical-grid-innhold {
+    .artikkel-grid-innhold {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
@@ -373,24 +396,24 @@ footer {
     /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
 
     /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
-    .topical-grid-innhold:nth-of-type(even) div:nth-child(1) {
+    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(1) {
         grid-column-start: 1;
     }
-    .topical-grid-innhold:nth-of-type(even) div:nth-child(2) {
+    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(2) {
         grid-column-start: 2;
     }
 
     /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
-    .topical-grid-innhold:nth-of-type(odd) div:nth-child(2) {
+    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(2) {
         grid-column-start: 1;
     }
-    .topical-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(1) {
         grid-column-start: 2;
     }
 
     /* Tving begge div-ene til å være på første rad */
     /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
-    .topical-grid-innhold div {
+    .artikkel-grid-innhold div {
         grid-row-start: 1;
     }
     .grid-footer {
@@ -412,7 +435,7 @@ footer {
     }
 }
 
-.topical-grid-innhold h2, .grid-artikkel h2 {
+.artikkel-grid-innhold h2, .grid-artikkel h2 {
     margin-top: 0px;
     margin-bottom: 0px;
 }
