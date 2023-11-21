@@ -1,6 +1,6 @@
-/**************************************/
-/*** Globale egenskaper / variabler ***/
-/**************************************/
+/******************************************/
+/*** Globale egenskaper, variabler o.l. ***/
+/******************************************/
 
 :root {
     /* Jevn rulling ved klikk på jumplinker */
@@ -39,6 +39,83 @@ body {
 
     /* La enkelte elementer (f.eks. footer) gå helt ut til kantene */
     margin: 0px;
+}
+
+
+/*****************************************/
+/*** Overskrifter, avsnitt, bilder o.l ***/
+/*****************************************/
+
+h1 {
+    font-size: 60px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 28px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 25px;
+
+    background-image: var(--boks-bakgrunn);
+    color: var(--lys-tekstfarge);
+
+    border-radius: 10px;
+    box-shadow: var(--boks-skygge);
+}
+
+.artikkel-grid-innhold h2, .grid-artikkel h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
+}
+
+.fotograf {
+    margin-top: 0px;
+    font-size: 13px;
+    color: gray;
+}
+
+main img {
+    /* La bilder fylle hele bredden av forelder-elementet som standard */
+    /* Da ser det meste greit ut på mobil, og vi kan bruke div-er til å begrense størrelsen der det trengs i andre formater */
+    width: 100%;
+    height: auto;
+}
+
+.bilde-makerspace {
+    float: right;
+    width: 35%;
+}
+.bilde-laserkutter {
+    float: right;
+    width: 30%;
+}
+
+main a, footer a {
+    color: darkblue;
+    font-size: 18px;
+    line-height: 30px;
+    transition: 0.1s;
+}
+
+main a:hover, footer a:hover {
+    color: darkred;
+    text-shadow: 2px 2px 3px gray;
+}
+
+main a:visited, footer a:visited {
+    color: indigo;
 }
 
 
@@ -233,82 +310,6 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     color: var(--lys-tekstfarge);
 }
 
-/*****************************************/
-/*** Overskrifter, avsnitt, bilder o.l ***/
-/*****************************************/
-
-h1 {
-    font-size: 60px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 28px;
-
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 25px;
-
-    background-image: var(--boks-bakgrunn);
-    color: var(--lys-tekstfarge);
-
-    border-radius: 10px;
-    box-shadow: var(--boks-skygge);
-}
-
-.artikkel-grid-innhold h2, .grid-artikkel h2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-p {
-    font-size: 18px;
-    line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
-}
-
-.fotograf {
-    margin-top: 0px;
-    font-size: 13px;
-    color: gray;
-}
-
-main img {
-    /* La bilder fylle hele bredden av forelder-elementet som standard */
-    /* Da ser det meste greit ut på mobil, og vi kan bruke div-er til å begrense størrelsen der det trengs i andre formater */
-    width: 100%;
-    height: auto;
-}
-
-.bilde-makerspace {
-    float: right;
-    width: 35%;
-}
-.bilde-laserkutter {
-    float: right;
-    width: 30%;
-}
-
-main a, footer a {
-    color: darkblue;
-    font-size: 18px;
-    line-height: 30px;
-    transition: 0.1s;
-}
-
-main a:hover, footer a:hover {
-    color: darkred;
-    text-shadow: 2px 2px 3px gray;
-}
-
-main a:visited, footer a:visited {
-    color: indigo;
-}
-
 
 /**************/
 /*** Footer ***/
@@ -321,7 +322,7 @@ footer {
 
 .footer-tekst {
     line-height: 30px;
-    color: white;
+    color: var(--lys-tekstfarge);
     font-size: 18px;
     margin-left: 20px;
 }
@@ -343,17 +344,11 @@ footer {
 }
 
 .footer-lenker {
-    color: white;
+    color: var(--lys-tekstfarge);
     text-decoration: none;
-    transition: 0,5s;
+    transition: 0.5s;
     text-align: center;
     padding-top: 10px;
-}
-
-.footer-lenker:hover {
-    cursor: pointer;
-    color: rgb(180, 1, 1);
-    text-decoration: underline;
 }
 
 .footer-grid-bildeplassering {
@@ -379,11 +374,12 @@ footer {
 /*** Responsiv design (media queries) ***/
 /****************************************/
 
-/*
+/**
 Fontstørrelsen for h1 blir litt stor på smale skjermer, så der skalerer vi ned.
 Vi kunne brukt vw for å oppnå en lignende og jevnere effekt,
 men dette fungerer dårlig sammen med zoom i nettleseren.
-*/
+**/
+
 @media (max-width: 750px) {
     h1 {
         font-size: 48px;
@@ -396,7 +392,9 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     }
 }
 
-/*** Layout for smal skjerm ***/
+
+/* ---------------------- */
+/* Layout for smal skjerm */
 
 @media (max-width: 1000px) {
     header {
@@ -450,7 +448,8 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
 }
 
 
-/*** Layout for bred skjerm ***/
+/* ---------------------- */
+/* Layout for bred skjerm */
 
 @media (min-width: 1001px) {
     header {
