@@ -61,18 +61,14 @@ main h2 {
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 25px;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
 
     background-image: var(--boks-bakgrunn);
     color: var(--lys-tekstfarge);
-
-    border-radius: 10px;
     box-shadow: var(--boks-skygge);
-/*}
-
-.artikkel-grid-innhold h2, .grid-hovedinnhold h2 {*/
-    margin-top: 0px;
-    margin-bottom: 0px;
+    border-radius: 10px;
 }
 
 p, ul {
@@ -94,17 +90,6 @@ main img {
     height: auto;
 }
 
-/*
-.bilde-makerspace {
-    float: right;
-    width: 35%;
-}
-.bilde-laserkutter {
-    float: right;
-    width: 30%;
-}
-*/
-
 main a, footer a {
     font-size: 18px;
     line-height: 30px;
@@ -115,14 +100,6 @@ main a {
     color: darkblue;
 }
 
-footer a {
-    color: var(--lys-tekstfarge);
-}
-
-.footer-grid-sosialemedier a {
-    text-decoration: none;
-}
-
 main a:hover, footer a:hover {
     color: darkred;
     text-shadow: 1px 1px 1px gray;
@@ -131,6 +108,14 @@ main a:hover, footer a:hover {
 
 main a:visited {
     color: indigo;
+}
+
+footer a {
+    color: var(--lys-tekstfarge);
+}
+
+.footer-grid-sosialemedier a {
+    text-decoration: none;
 }
 
 
@@ -206,7 +191,6 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr; /* Sidemenyen tar ~25% av tilgjengelig bredde */
-    /*row-gap: 25px;*/
     column-gap: 25px;
 }
 
@@ -350,7 +334,7 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 
 footer {
     width: 100%;
-    background-color: rgb(0, 40, 0);
+    background-image: var(--boks-bakgrunn);
 }
 
 /* Vis cellene i footer-griden ved siden av hverandre når vi har plass til det */
@@ -359,9 +343,7 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     padding-top: 50px;
-    padding-bottom: 50px;/*
-    padding-left: 20px;
-    padding-right: 20px;*/
+    padding-bottom: 50px;
 }
 
 .footer-grid-tekst {
@@ -379,11 +361,6 @@ footer {
     row-gap: 10px;
     align-items: center;
 }
-
-/*.footer-grid-sosialemedier img {
-    width: 50px;
-}*/
-
 
 /****************************************/
 /*** Responsiv design (media queries) ***/
