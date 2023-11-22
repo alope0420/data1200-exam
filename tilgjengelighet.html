@@ -43,7 +43,7 @@
                 <ul>
                     <li>har brede marger for å lette lesbarheten</li>
                     <li>har svevende menyer som følger rulleposisjonen (&laquo;sticky&raquo;) for å forenkle navigeringen</li>
-                    <li>viser tekst og bilder side om side ved bruk av grid</li>
+                    <li>viser tekst og bilder side om side ved bruk av grid (på emnesiden)</li>
                 </ul>
                 <li>Mobilversjonen av nettstedet (bredde 1000px og under)</li>
                 <ul>
@@ -65,12 +65,12 @@
 
             <h2>Lenker</h2>
             <p>
-                Lenkene på nettstedet informerer tydelig om hvor de fører hen, og de er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt, og dessuten endrer de farge når man holder musen over dem. Vi har valgt å utelate understreking av lenker på menyer, da vi mener at visuell og/eller semantisk kontekst gjør det tydelig nok at disse er klikkbare.
+                Lenkene på nettstedet informerer tydelig om hvor de fører hen, og de er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt, og dessuten endrer de farge når man holder musen over dem. Vi har utelatt understreking av lenker på menyer samt lenker til sosiale medier i footeren, da vi mener at visuell og/eller semantisk kontekst gjør det tilstrekkelig tydelig at disse er klikkbare.
             </p>
 
             <h2>Bilder</h2>                                
             <p>
-                Vi ble også tidlig minnet om viktigheten av attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer. Før innlevering tok vi en runde gjennom alle sidene og la til disse der de manglet. <code>alt</code>-attributtene sørger for at bildene er forståelige for brukere av assisterende teknologi (f.eks. skjermlesere), mens <code>width</code> og <code>height</code> gjør at nettleseren slipper å rekalkulere layouten etter hvert som bildene lastes inn, ettersom den allerede vet hvor store de kommer til å være.
+                Vi har passet på å inkludere attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer. <code>alt</code>-attributtene sørger for at bildene er forståelige og meningsbærende for brukere av assisterende teknologi (f.eks. skjermlesere), og <code>width</code> og <code>height</code> forteller nettleseren størrelsen på bildene før de er lastet inn, slik at den slipper å rekalkulere layouten fortløpende. Dermed unngår vi at elementer hopper rundt omkring under innlasting, noe som gir en bedre brukeropplevelse.
             </p>
 
             <h2>Skjema</h2>
@@ -85,16 +85,13 @@
         
             <h2>Sidetitler</h2>
             <p>
-                Vi har passet på at alle title-tagger er relevante og slutter med den samme beskrivelsestekst på alle sidene.
+                Vi har passet på at alle title-tagger er relevante og slutter med det samme nettstedsnavnet på alle sidene.
             </p>
 
             <h2>Kodevalidering</h2>
             <p>
                 Vi har kjørt <a href="https://validator.w3.org/" target="_blank">W3C-validatoren</a> på alle sidene gjentatte ganger og løst alle feilene som ble funnet, f.eks. manglende start- og slutt-tagger, meta-tagger og så videre.
             </p>
-
-            <!-- TODO: Image of code -->
-            
         </main>
   
         <footer class="footer-grid">
