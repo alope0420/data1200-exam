@@ -348,7 +348,7 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
 }
 
 .sidemeny li::marker {
-    content: "\2192"; /* pil-ikon */
+    content: "\2192"; /* pil-symbol */
 
     /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
     font-size: var(--punkttegn-bredde);
@@ -466,11 +466,11 @@ fungerer dårlig sammen med zoom.
         */
         box-shadow:
             var(--boks-skygge),
-            0px -1019px 19px 1000px white;
+            0px -1020px 20px 1000px white;
     }
 
     nav li {
-        /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
+        /* Plasser elementene på menyen bortover i stedet for nedover */
         display: inline-block;
     }
 
@@ -489,8 +489,7 @@ fungerer dårlig sammen med zoom.
         grid-row-start: 2;
     }
 
-    /* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
-    /* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
+    /* Grid-layout med to kolonner */
     .emneside-grid-innhold {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -498,6 +497,7 @@ fungerer dårlig sammen med zoom.
         row-gap: 30px;
     }
 
+    
     /* Disse selectorene gjør at bildene havner på venstre/høyre side av teksten annenhver gang */
     /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
 
