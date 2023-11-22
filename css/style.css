@@ -13,7 +13,7 @@
     Bakgrunnsbilde for menyer og h2-elementer.
     Gradienten gjør bildet mørkere og mer dempet enn originalen.
     Vi bruker en variabel for å slippe å kopiere hele koden til flere steder.
-    Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske
+    Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske. Artist: Kim Boske
     */
     --boks-bakgrunn:
         linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
