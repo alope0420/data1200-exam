@@ -42,6 +42,41 @@ body {
 }
 
 
+/****************************/
+/*** Semantiske elementer ***/
+/****************************/
+
+header {
+    background-image: var(--boks-bakgrunn);
+
+    /*
+    Midtstill bakgrunnsbildet horisontalt. Bildet er symmetrisk, så dette ser bedre ut.
+    Unngå derimot vertikal midtstilling, noe som ser rart ut når menyen åpnes og lukkes.
+    */
+    background-position: center top;
+
+    /* Midtstill bl.a. menypunkter */
+    text-align: center;
+
+    /* Forhindre at sidemenyen flyter over headeren når man ruller til bunn */
+    z-index: 1;
+}
+
+main {
+    /*
+    Alltid minst 20px marg, men hvis skjermen er bred nok, øker vi margen
+    slik at innholdet maks har en bredde på 1100px. Dette for å gjøre leseopplevelsen bedre.
+    */
+    margin-left: max(20px, calc(50% - 550px));
+    margin-right: max(20px, calc(50% - 550px));
+}
+
+footer {
+    width: 100%;
+    background-image: var(--boks-bakgrunn);
+}
+
+
 /*****************************************/
 /*** Overskrifter, avsnitt, bilder o.l ***/
 /*****************************************/
@@ -50,7 +85,7 @@ main h1 {
     font-size: 60px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -80,9 +115,21 @@ main h3 {
     margin-top: 20px;
 }
 
-p, ul {
+p, ul, a {
     font-size: 18px;
-    line-height: 30px; /* For å få litt luft mellom linjene i teksten på sidene */
+    line-height: 30px; /* Luft mellom linjene */
+}
+
+nav ul {
+    /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles på menylinjen */
+    padding: 0;
+    
+    /* Gjør fokusmarkeringene tydeligere ved tab-navigering */
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+    /* Fjern kulene foran punktene (bare relevant når menyen vises som en vanlig liste på smal skjerm) */
+    list-style-type: none;
 }
 
 .fotograf {
@@ -99,65 +146,15 @@ main img {
     height: auto;
 }
 
-main a, footer a {
-    font-size: 18px;
-    line-height: 30px;
+.footer-grid-sosiale-medier img {
+    vertical-align: middle;
+    margin: 10px;
+    width: 32px;
+    height: 32px;
+}
+
+a {
     transition: 0.1s;
-}
-
-main a {
-    color: darkblue;
-}
-
-main a:hover, footer a:hover {
-    color: darkred;
-    text-shadow: 1px 1px 1px gray;
-    text-decoration: underline;
-}
-
-main a:visited {
-    color: indigo;
-}
-
-footer a {
-    color: var(--lys-tekstfarge);
-}
-
-.footer-grid-sosialemedier a {
-    text-decoration: none;
-}
-
-
-/****************/
-/*** Toppmeny ***/
-/****************/
-
-header {
-    background-image: var(--boks-bakgrunn);
-
-    /*
-    Midtstill bakgrunnsbildet horisontalt. Bildet er symmetrisk, så dette ser bedre ut.
-    Unngå derimot vertikal midtstilling, noe som ser rart ut når menyen åpnes og lukkes.
-    */
-    background-position: center top;
-
-    /* Midtstill bl.a. menypunkter */
-    text-align: center;
-
-    /* Forhindre at sidemenyen flyter over headeren når man ruller til bunn */
-    z-index: 1;
-}
-
-nav ul {
-    /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles på menylinjen */
-    padding: 0;
-    
-    /* Gjør fokusmarkeringene tydeligere ved tab-navigering */
-    margin-top: 1px;
-    margin-bottom: 1px;
-
-    /* Fjern kulene foran punktene (bare relevant når menyen vises som en vanlig liste på smal skjerm) */
-    list-style-type: none;
 }
 
 nav a {
@@ -167,15 +164,52 @@ nav a {
     font-weight: bold;
     padding: 25px;
     display: block; /* Slik at nettleseren respekterer padding-verdien */
-    transition-duration: 0.1s;
 }
 
 nav a:hover {
     background-color: var(--boks-hover-farge);
 }
 
-/* Checkbox og label som brukes for å åpne og lukke menyen ved behov.
-Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale skjermer, lenger ned i filen. */
+main a {
+    color: darkblue;
+}
+
+footer a {
+    color: var(--lys-tekstfarge);
+}
+
+main a:hover, footer a:hover {
+    color: brown;
+    text-shadow: 1px 1px 1px gray;
+    text-decoration: underline;
+}
+
+main a:visited {
+    color: indigo;
+}
+
+.footer-grid-sosiale-medier a {
+    text-decoration: none;
+}
+
+/* Nummererte overskrifter på Tilgjengelighet-siden */
+.tilgjengelighet-tekst {
+    counter-reset: punkt;
+}
+.tilgjengelighet-tekst h2::before {
+    counter-increment: punkt;
+    content: counter(punkt) ". ";
+}
+
+
+/****************/
+/*** Toppmeny ***/
+/****************/
+
+/*
+Checkbox og label som brukes for å åpne og lukke menyen ved behov.
+Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale skjermer, lenger ned i filen.
+*/
 #toppmeny-bryter {
     /* Selve checkboxen skal aldri være synlig */
     display: none;
@@ -194,23 +228,22 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 }
 
 
-/***********************************************************************/
-/*** Hovedgrid for sider med hovedbilde, sidemeny og innholdskolonne ***/
-/***********************************************************************/
+/********************************************/
+/*** Grid med sidemeny og innholdskolonne ***/
+/********************************************/
 
-.grid-container {
+/*
+Vi har valgt å samle alle stilene for sidemenyen her (i stedet for lenger opp)
+for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
+*/
+
+.makerspace-grid {
     display: grid;
     grid-template-columns: 1fr 3fr; /* Sidemenyen tar ~25% av tilgjengelig bredde */
     column-gap: 25px;
 }
 
-.grid-hovedbilde {
-    grid-column-start: 1;
-    grid-column-end: span 2;
-    grid-row-start: 1;
-}
-
-.grid-sidemeny {
+.makerspace-grid-sidemeny {
     background-image: var(--boks-bakgrunn);
     box-shadow: var(--boks-skygge);
     border-radius: 10px;
@@ -221,17 +254,17 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     top: 120px;
     align-self: start;
     margin-top: 18px;
-    margin-bottom: 18px; /* Luft mot footeren */
+    margin-bottom: 18px; /* Luft mot footeren når man ruller til bunnen */
 }
 
-.sidemeny {
+.sidemeny { /* ul-element */
     list-style-position: inside;
     margin: 0;
     padding: 0;
     
     /*
-    Vi må gjøre et par utregninger lenger nede for å få hover-effekten til å fungere som den skal.
-    Derfor definerer vi noen viktige tall som variabler for å gjøre det lettere å endre på layouten ved behov.
+    Vi må gjøre et par ikke-trivielle utregninger lenger nede for å få hover-effekten til å fungere som den skal.
+    Derfor definerer vi noen viktige tall som variabler for å gjøre det lettere å justere layouten i fremtiden.
     */
     --punkt-padding-topp-bunn: 10px;
     --punkt-padding-venstre-hoyre: 15px;
@@ -283,7 +316,6 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     color: var(--lys-tekstfarge);
     text-decoration: none;
     text-shadow: 3px 3px 3px black;
-    transition: 0.15s;
 }
 
 /* Sørg for riktig hjørneavrunding på første og siste punkt på jumplink-listen. */
@@ -325,33 +357,14 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
 }
 
 
-/********************************************************/
-/*** Nummererte overskrifter på Tilgjengelighet-siden ***/
-/********************************************************/
-
-.tilgjengelighet-tekst {
-    counter-reset: punkt;
-}
-.tilgjengelighet-tekst h2::before {
-    counter-increment: punkt;
-    content: counter(punkt) ". ";
-}
-
-
-/**************/
-/*** Footer ***/
-/**************/
-
-footer {
-    width: 100%;
-    background-image: var(--boks-bakgrunn);
-}
+/*******************/
+/*** Footer grid ***/
+/*******************/
 
 /* Vis cellene i footer-griden ved siden av hverandre når vi har plass til det */
 .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -360,40 +373,28 @@ footer {
     line-height: 30px;
     color: var(--lys-tekstfarge);
     font-size: 18px;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
-.footer-grid-sosialemedier {
-    display: grid;
-    grid-template-columns: 50px auto;
-    grid-template-rows: 1fr 1fr 1fr;
-    column-gap: 30px;
-    row-gap: 10px;
-    align-items: center;
+.footer-grid-kontaktinfo, .footer-grid-sosiale-medier {
+    white-space: nowrap;
 }
 
 /****************************************/
 /*** Responsiv design (media queries) ***/
 /****************************************/
 
-/**
-Fontstørrelsen for h1 blir litt stor på smale skjermer, så der skalerer vi ned.
-Vi kunne brukt vw for å oppnå en lignende og jevnere effekt,
-men dette fungerer dårlig sammen med zoom i nettleseren.
-**/
-
+/*
+Vi reduserer størrelsen på h1 når skjermen blir veldig smal,
+ellers sprenger den layouten og skaper horisontal rulling.
+Vi kunne brukt f.eks. 8vw for å få jevn skalering, men dette
+fungerer dårlig sammen med zoom.
+*/
 @media (max-width: 750px) {
-    h1 {
-        font-size: 48px;
+    main h1 {
+        font-size: 40px;
     }
 }
-
-@media (max-width: 600px) {
-    h1 {
-        font-size: 32px;
-    }
-}
-
 
 /* ---------------------- */
 /* Layout for smal skjerm */
@@ -417,25 +418,19 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     #toppmeny-bryter:checked + nav {
         /*
         Den eksakte verdien for max-height er ikke kjempenøye, så lenge den er minst like stor som menyens makshøyde.
-        Men om den er altfor stor i forhold til faktisk høyde, blir den synlige transition-effekten
-        tilsvarende for rask i forhold til transition-duration som er angitt ovenfor.
+        Men om den er altfor stor i forhold til faktisk høyde, blir også transition-effekten proporsjonalt for rask
+        i forhold til verdien for transition-duration som er angitt ovenfor.
         */
-        max-height: 500px;
-    }
-    
-    main {
-        margin-left: 20px;
-        margin-right: 20px;
+        max-height: 330px;
     }
 
     /* Vi har ikke plass til noen sidemeny på smale skjermer */
-    .grid-sidemeny {
+    .makerspace-grid-sidemeny {
         display: none;
     }
-    .grid-hovedinnhold {
+    .makerspace-grid-hovedinnhold {
         grid-column-start: 1;
         grid-column-end: span 2;
-        grid-row-start: 2;
     }
 
     /*
@@ -449,7 +444,6 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
         row-gap: 50px;
     }
 }
-
 
 /* ---------------------- */
 /* Layout for bred skjerm */
@@ -474,12 +468,6 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
             var(--boks-skygge),
             0px -1019px 19px 1000px white;
     }
-    
-    /* Bredere marginer når vi har plass til det. Ikke testet på ultra-widescreen. */
-    main {
-        margin-left: 20%;
-        margin-right: 20%;
-    }
 
     nav li {
         /* Plasser elementene på menyen på vannrett linje i stedet for i en typisk "liste" */
@@ -492,18 +480,18 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     }
 
     /* Grid med sidemeny til venstre og artikkel/tekst til høyre */
-    .grid-sidemeny {
+    .makerspace-grid-sidemeny {
         grid-column-start: 1;
         grid-row-start: 2;
     }
-    .grid-hovedinnhold {
+    .makerspace-grid-hovedinnhold {
         grid-column-start: 2;
         grid-row-start: 2;
     }
 
     /* Grid-layout med to kolonner - brukes kun når skjermen er bred nok */
     /* På smale skjermer lar vi div-ene havne under hverandre i én kolonne i stedet */
-    .artikkel-grid-innhold {
+    .emneside-grid-innhold {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
@@ -514,24 +502,24 @@ men dette fungerer dårlig sammen med zoom i nettleseren.
     /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
 
     /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
-    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(1) {
+    .emneside-grid-innhold:nth-of-type(even) div:nth-child(1) {
         grid-column-start: 1;
     }
-    .artikkel-grid-innhold:nth-of-type(even) div:nth-child(2) {
+    .emneside-grid-innhold:nth-of-type(even) div:nth-child(2) {
         grid-column-start: 2;
     }
 
     /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
-    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(2) {
+    .emneside-grid-innhold:nth-of-type(odd) div:nth-child(2) {
         grid-column-start: 1;
     }
-    .artikkel-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+    .emneside-grid-innhold:nth-of-type(odd) div:nth-child(1) {
         grid-column-start: 2;
     }
 
     /* Tving begge div-ene til å være på første rad */
     /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
-    .artikkel-grid-innhold div {
+    .emneside-grid-innhold div {
         grid-row-start: 1;
     }
 }
