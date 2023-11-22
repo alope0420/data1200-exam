@@ -35,28 +35,45 @@
             </p>
 
             <h2>Forstørring og responsivt design</h2>
-            <p>
-                Nettstedet ser ut til å fungere godt ved både 200&nbsp;% og 400&nbsp;% forstørring. Videre har vi gjort mange bevisste grep for å oppnå et responsivt design som fungerer godt på både bred og smal skjerm:
-            </p>
-            <ul>
-                <li>Datamaskinversjonen av nettstedet (bredde over 1000px)</li>
-                <ul>
-                    <li>har brede marger for å lette lesbarheten</li>
-                    <li>har svevende menyer som følger rulleposisjonen (&laquo;sticky&raquo;) for å forenkle navigeringen</li>
-                    <li>viser tekst og bilder side om side ved bruk av grid (på emnesiden)</li>
-                </ul>
-                <li>Mobilversjonen av nettstedet (bredde 1000px og under)</li>
-                <ul>
-                    <li>har smale marger for å utnytte plassen bedre</li>
-                    <li>har en fastlåst toppmeny som går helt ut til kantene og er &laquo;kollapset&raquo; til ett element som kan utvides ved behov, slik at den ikke tar opp mer plass enn nødvendig når den ikke er i bruk</li>
-                    <li>viser tekst, bilder og footerkolonner under hverandre for at elementene ikke skal bli for små</li>
-                </ul>
-            </ul>
+            <div class="tilgjengelighet-grid">
+                <div>
+                    <p>
+                        Nettstedet ser ut til å fungere godt ved både 200&nbsp;% og 400&nbsp;% forstørring. Videre har vi gjort mange bevisste grep for å oppnå et responsivt design som fungerer godt på både bred og smal skjerm:
+                    </p>
+                    <ul>
+                        <li>Datamaskinversjonen av nettstedet (bredde over 1000px)</li>
+                        <ul>
+                            <li>har brede marger for å lette lesbarheten</li>
+                            <li>har svevende menyer som følger rulleposisjonen (&laquo;sticky&raquo;) for å forenkle navigeringen</li>
+                            <li>viser tekst og bilder side om side ved bruk av grid (på emnesiden)</li>
+                        </ul>
+                        <li>Mobilversjonen av nettstedet (bredde 1000px og under)</li>
+                        <ul>
+                            <li>har smale marger for å utnytte plassen bedre</li>
+                            <li>har en fastlåst toppmeny som går helt ut til kantene og er &laquo;kollapset&raquo; til ett element som kan utvides ved behov, slik at den ikke tar opp mer plass enn nødvendig når den ikke er i bruk</li>
+                            <li>viser tekst, bilder og footerkolonner under hverandre for at elementene ikke skal bli for små</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="tilgjengelighet-grid-bilde">
+                    <!--
+                        Det blir svært omstendelig og har sannsynligvis lav nytteverdi å ta med en fullstendig alt-tekst for bilder som inneholder kode.
+                        Det er hovedgrunnen til at vi henviser til de faktiske linjenumrene i CSS-filen. Det er selvsagt en fare for at disse numrene
+                        lett blir utdaterte og unøyaktige.
+                    -->
+                    <img src="bilder/tilgjengelighet/kode-main-margin.webp" alt="Kode for dynamiske marger. Linje 62&ndash;69 i style.css.">
+                    <p class="bildeforklaring">Kode for dynamiske marger. Linje 62&ndash;69 i style.css.</p>
+                    <img src="bilder/tilgjengelighet/kode-smal-layout.webp" alt="Utdrag av koden for layout for smale skjermer. Den faktiske koden har flere kommentarer. Linje 404&ndash;449 i style.css.">
+                    <p class="bildeforklaring">Utdrag av koden for layout for smale skjermer. Den faktiske koden har flere kommentarer. Linje 404&ndash;449 i style.css.</p>
+                </div>
+            </div>
 
             <h2>Farger og kontrast</h2>
             <p>
-                Vi har vært bevisst på fargevalg, kontraster og lesbarhet gjennom hele utviklingsprosessen. I tillegg har vi kjørt <a href="https://color.a11y.com" target="_blank">A11Y Color Contrast Accessibility Validator</a> på siden for å sikre at kontrastkravene i <a href="https://www.w3.org/Translations/WCAG21-no/" target="_blank">WCAG 2.1</a> er oppfylt. (NB: Denne gir en false positive på linkene i footeren per nå.)
+                Vi har vært bevisst på fargevalg, kontraster og lesbarhet gjennom hele utviklingsprosessen. I tillegg har vi kjørt <a href="https://color.a11y.com" target="_blank">A11Y Color Contrast Accessibility Validator</a> på siden for å sikre at kontrastkravene i <a href="https://www.w3.org/Translations/WCAG21-no/" target="_blank">WCAG 2.1</a> er oppfylt.
             </p>
+            <img src="bilder/tilgjengelighet/a11y-rapport.webp" alt="Skjermdump av A11Y-rapporten fra en av sidene. Den viser at det ikke ble funnet noen problemer med kontrast, og at kontrasten er mer enn dobbelt så god som minstekravet for fire ulike fargepar.">
+            <p class="bildeforklaring">Skjermdump av A11Y-rapporten fra en av sidene.</p>
 
             <h2>Overskrifter</h2>
             <p>
@@ -64,13 +81,27 @@
             </p>
 
             <h2>Lenker</h2>
-            <p>
-                Lenkene på nettstedet informerer tydelig om hvor de fører hen, og de er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt, og dessuten endrer de farge når man holder musen over dem. Vi har utelatt understreking av lenker på menyer samt lenker til sosiale medier i footeren, da vi mener at visuell og/eller semantisk kontekst gjør det tilstrekkelig tydelig at disse er klikkbare.
-            </p>
+            <div class="tilgjengelighet-grid">
+                <div>
+                    <p>
+                        Lenkene på nettstedet informerer tydelig om hvor de fører hen, og de er godt synliggjort gjennom både fargevalg og understreking. Vi har valgt å holde oss nærme det konvensjonelle fargeskjemaet med blå lenker som blir lilla når de er besøkt, og dessuten animeres de når man holder musen over dem. Eksempel: Gå tilbake til <a href="index.html">forsiden</a>. Vi har utelatt understreking av lenker på menyer samt lenker til sosiale medier i footeren, da vi mener at visuell og/eller semantisk kontekst gjør det tilstrekkelig tydelig at disse er klikkbare. 
+                    </p>
+                </div>
+                <div class="tilgjengelighet-grid-bilde">
+                    <img src="bilder/tilgjengelighet/kode-lenkefarger.webp" alt="Kode for lenkefarger. Linje 171&ndash;189 i style.css.">
+                    <p class="bildeforklaring">Kode for lenkefarger. Linje 171&ndash;189 i style.css.</p>
+                </div>
+            </div>
 
             <h2>Bilder</h2>                                
             <p>
-                Vi har passet på å inkludere attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer. <code>alt</code>-attributtene sørger for at bildene er forståelige og meningsbærende for brukere av assisterende teknologi (f.eks. skjermlesere), og <code>width</code> og <code>height</code> forteller nettleseren størrelsen på bildene før de er lastet inn, slik at den slipper å rekalkulere layouten fortløpende. Dermed unngår vi at elementer hopper rundt omkring under innlasting, noe som gir en bedre brukeropplevelse.
+                Vi har passet på å inkludere attributtene <code>alt</code>, <code>width</code> og <code>height</code> for <code>img</code>-elementer.
+            </p>
+            <p>
+                <code>alt</code>-attributtene sørger for at bildene er forståelige og meningsbærende for brukere av assisterende teknologi (f.eks. skjermlesere). Bilder av koden har henvisninger til linjenumrene i <code>alt</code>-teksten, siden det blir omstendelig og sannsynligvis har liten nytteverdi for brukeren om den faktiske koden inkluderes i <code>alt</code>-teksten.
+            </p>
+            <p>
+                <code>width</code> og <code>height</code> forteller nettleseren størrelsen på bildene før de er lastet inn, slik at den slipper å rekalkulere layouten fortløpende. Dermed unngår vi at elementer hopper rundt omkring under innlasting, noe som gir en bedre brukeropplevelse. Vi har også skalert ned bilder og konvertert dem til webp-format for å holde størrelsen lavest mulig.
             </p>
 
             <h2>Skjema</h2>

@@ -13,12 +13,13 @@
     Bakgrunnsbilde for menyer og h2-elementer.
     Gradienten gjør bildet mørkere og mer dempet enn originalen.
     Vi bruker en variabel for å slippe å kopiere hele koden til flere steder.
+    Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske
     */
     --boks-bakgrunn:
         linear-gradient(rgba(0.5, 0.2, 0.5, 0.6), rgba(0.5, 0.2, 0.5, 0.6)),
-        /* Det opprinnelige bildet er hentet fra https://unveil.art/collections/kim-boske */
         url(../bilder/bakgrunn-redigert.webp);
 
+    --boks-hover-farge: rgba(0, 200, 80, 0.5);
     --boks-skygge: 2px 2px 5px black;
 
     /*
@@ -27,10 +28,6 @@
     Negativ y kompenserer for overdreven spread i y-retning.
     */
     --linje-skygge: -5px -8px 5px 10px black;
-
-    --boks-hover-farge: rgba(0, 200, 80, 0.5);
-    --lys-tekstfarge: linen;
-    --mork-tekstfarge: black;
 }
 
 body {
@@ -64,8 +61,8 @@ header {
 
 main {
     /*
-    Alltid minst 20px marg, men hvis skjermen er bred nok, øker vi margen
-    slik at innholdet maks har en bredde på 1100px. Dette for å gjøre leseopplevelsen bedre.
+    Alltid minst 20px marg, men hvis skjermen er bred nok, øker vi margen slik at
+    innholdet maks har en bredde på 1100px, for å gjøre leseopplevelsen bedre.
     */
     margin-left: max(20px, calc(50% - 550px));
     margin-right: max(20px, calc(50% - 550px));
@@ -101,7 +98,7 @@ main h2 {
     margin-bottom: 0px;
 
     background-image: var(--boks-bakgrunn);
-    color: var(--lys-tekstfarge);
+    color: linen;
     box-shadow: var(--boks-skygge);
     border-radius: 10px;
 }
@@ -132,11 +129,12 @@ nav ul {
     list-style-type: none;
 }
 
-.fotograf {
+.fotograf, .bildeforklaring {
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 13px;
-    color: rgb(40, 33, 33);
+    line-height: 13px;
+    color: #444;
 }
 
 main img {
@@ -158,7 +156,7 @@ a {
 }
 
 nav a {
-    color: var(--lys-tekstfarge);
+    color: linen;
     text-decoration-line: none;
     font-size: 22px;
     font-weight: bold;
@@ -175,12 +173,14 @@ main a {
 }
 
 footer a {
-    color: var(--lys-tekstfarge);
+    color: linen;
 }
 
 main a:hover, footer a:hover {
     color: brown;
     text-shadow: 1px 1px 1px gray;
+    /* Noen linker i footer har ikke underline som standard,
+    så vis underline ved hover */
     text-decoration: underline;
 }
 
@@ -221,7 +221,7 @@ Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale
     text-align: right;
     padding: 20px;
     height: 32px;
-    color: var(--lys-tekstfarge);
+    color: linen;
 
     /* La elementet gå fra kant til kant => gjør hele menylinjen klikkbar */
     display: block;
@@ -313,7 +313,7 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
 
     padding-top: var(--punkt-padding-topp-bunn);
     padding-bottom: var(--punkt-padding-topp-bunn);
-    color: var(--lys-tekstfarge);
+    color: linen;
     text-decoration: none;
     text-shadow: 3px 3px 3px black;
 }
@@ -339,7 +339,7 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
     */
     border-top-width: 2px;
     border-top-style: dotted;
-    border-top-color: var(--lys-tekstfarge);
+    border-top-color: linen;
 }
 
 .sidemeny li:first-child {
@@ -353,7 +353,7 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
     /* NB: Hvis punkttegnet (i content) endres, er det ikke nødvendigvis 1:1-samsvar mellom font-size og --punkttegn-bredde. */
     font-size: var(--punkttegn-bredde);
     font-weight: initial;
-    color: var(--lys-tekstfarge);
+    color: linen;
 }
 
 
@@ -371,8 +371,8 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
 
 .footer-grid-tekst {
     line-height: 30px;
-    color: var(--lys-tekstfarge);
-    font-size: 18px;
+    color: linen;
+    font-size: 16px;
     margin-left: 50px;
 }
 
@@ -384,15 +384,20 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
 /*** Responsiv design (media queries) ***/
 /****************************************/
 
-/*
-Vi reduserer størrelsen på h1 når skjermen blir veldig smal,
-ellers sprenger den layouten og skaper horisontal rulling.
-Vi kunne brukt f.eks. 8vw for å få jevn skalering, men dette
-fungerer dårlig sammen med zoom.
-*/
 @media (max-width: 750px) {
+    /*
+    Vi reduserer størrelsen på h1 når skjermen blir veldig smal,
+    ellers sprenger den layouten og skaper horisontal rulling.
+    Vi kunne brukt f.eks. 8vw for å få jevn skalering, men dette
+    fungerer dårlig sammen med zoom.
+    */
     main h1 {
-        font-size: 40px;
+        font-size: 32px;
+    }
+
+    /* Vi må også utnytte plassen i footeren bedre på veldig smale skjermer. */
+    .footer-grid-tekst {
+        margin-left: 20px;
     }
 }
 
@@ -438,9 +443,7 @@ fungerer dårlig sammen med zoom.
     i stedet for ved siden av hverandre. Det tar seg bedre ut på smal skjerm.
     */
     .footer-grid {
-        display: grid;
         grid-template-columns: unset;
-        justify-self: center;
         row-gap: 50px;
     }
 }
@@ -489,37 +492,46 @@ fungerer dårlig sammen med zoom.
         grid-row-start: 2;
     }
 
+    /* Grid for sporadisk sidestilling av bilder i tilgjengelighet.html */
+    .tilgjengelighet-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .tilgjengelighet-grid-bilde {
+        padding: 10px;
+    }
+
     /* Grid-layout med to kolonner */
-    .emneside-grid-innhold {
+    .emneside-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
         row-gap: 30px;
     }
 
-    
+
     /* Disse selectorene gjør at bildene havner på venstre/høyre side av teksten annenhver gang */
     /* Hver forelder-div i HTML har først en div med tekst, deretter en div med bilde */
 
     /* partallsindeks: tekst-div i første kolonne, bilde-div i andre kolonne */
-    .emneside-grid-innhold:nth-of-type(even) div:nth-child(1) {
+    .emneside-grid:nth-of-type(even) div:nth-child(1) {
         grid-column-start: 1;
     }
-    .emneside-grid-innhold:nth-of-type(even) div:nth-child(2) {
+    .emneside-grid:nth-of-type(even) div:nth-child(2) {
         grid-column-start: 2;
     }
 
     /* oddetallsindeks: tekst-div i andre kolonne, bilde-div i andre kolonne */
-    .emneside-grid-innhold:nth-of-type(odd) div:nth-child(2) {
+    .emneside-grid:nth-of-type(odd) div:nth-child(2) {
         grid-column-start: 1;
     }
-    .emneside-grid-innhold:nth-of-type(odd) div:nth-child(1) {
+    .emneside-grid:nth-of-type(odd) div:nth-child(1) {
         grid-column-start: 2;
     }
 
     /* Tving begge div-ene til å være på første rad */
     /* (ellers havner den ene div-en på ny rad når forelder-div-en har oddetallsindeks) */
-    .emneside-grid-innhold div {
+    .emneside-grid div {
         grid-row-start: 1;
     }
 }
