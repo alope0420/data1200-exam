@@ -291,14 +291,23 @@ for å gjøre det lettere å forstå hvordan alle selectorene fungerer sammen.
     Vi vil også at bakgrunnsfargen skal dekke selve punkttegnet, så vi bruker negativ margin
     tilsvarende listepunktets padding + punkttegnets bredde for å komme helt til kanten av listen.
     */
-    --punkttekst-beregnet-margin-venstre: calc(var(--punkt-padding-venstre-hoyre) + var(--punkttegn-bredde));
-    margin-left: calc(0px - var(--punkttekst-beregnet-margin-venstre));
+    --punkttekst-beregnet-margin-venstre: calc(
+        var(--punkt-padding-venstre-hoyre)
+        + var(--punkttegn-bredde)
+    );
+    margin-left: calc(
+        0px
+        - var(--punkttekst-beregnet-margin-venstre)
+    );
 
     /*
     For at punktteksten ikke også skal havne helt ut i kanten, kompenserer vi med tilsvarende padding,
     men legger på noen ekstra piksler for å få luft mellom punkttegnet og punktteksten.
     */
-    --punkttekst-beregnet-padding-venstre: calc(var(--punkttekst-beregnet-margin-venstre) + var(--punkttekst-punkttegn-avstand));
+    --punkttekst-beregnet-padding-venstre: calc(
+        var(--punkttekst-beregnet-margin-venstre)
+        + var(--punkttekst-punkttegn-avstand)
+    );
     padding-left: var(--punkttekst-beregnet-padding-venstre);
 
     /*
