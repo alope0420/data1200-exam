@@ -149,9 +149,12 @@ header {
 }
 
 nav ul {
-    /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles */
+    /* Tilbakestill standard list padding til 0, slik at punktene faktisk midtstilles på menylinjen */
     padding: 0;
-    margin: 0;
+    
+    /* Gjør fokusmarkeringene tydeligere ved tab-navigering */
+    margin-top: 1px;
+    margin-bottom: 1px;
 
     /* Fjern kulene foran punktene (bare relevant når menyen vises som en vanlig liste på smal skjerm) */
     list-style-type: none;
@@ -171,10 +174,8 @@ nav a:hover {
     background-color: var(--boks-hover-farge);
 }
 
-/*
-Checkbox og label som brukes for å åpne og lukke menyen ved behov.
-Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale skjermer, lenger ned i filen.
-*/
+/* Checkbox og label som brukes for å åpne og lukke menyen ved behov.
+Mesteparten av implementasjonen og forklaringen ligger i media-queryen for smale skjermer, lenger ned i filen. */
 #toppmeny-bryter {
     /* Selve checkboxen skal aldri være synlig */
     display: none;
